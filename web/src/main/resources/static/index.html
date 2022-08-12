@@ -18,12 +18,14 @@
 		$("#user").html(data.name);
 		$(".unauthenticated").hide()
 		$(".authenticated").show()
-		if(data != null){
-			if(data.user.enabled == true){
-				$(".subscribe").text("Subscribed");
-			}
-			else{
-				$(".subscribe").text("Subscribe");
+		if (data != null) {
+			if (data.user.enabled == true) {
+				$(".subscribe").text("SUBSCRIBED");
+				$(".subscribe").attr("onClick","")
+				$(".subscribe").attr("data-toggle","modal")
+			} else {
+				$(".subscribe").text("SUBSCRIBE");
+				$(".subscribe").attr("data-toggle","")
 			}
 		}
 	});
@@ -36,57 +38,109 @@
 		})
 		return true;
 	}
-	var subscribeMail = function(){
-		$.get("/subscribe",function(data){
-			
-			if ("success" == data.result){
-				$(".subscribe").text("Subscribed");
-			}else{
+	var subscribeMail = function() {
+		$.get("/subscribe", function(data) {
+
+			if ("success" == data.result) {
+				$(".subscribe").text("SUBSCRIBED");
+				$(".subscribe").attr("onClick","")
+				$(".subscribe").attr("data-toggle","modal")
+				
+			} else {
+				$(".notify").text("Some error Occured");
+			}
+		})
+		return true;
+	}
+	
+	var unsubscribeMail = function() {
+		$.get("/unsubscribe", function(data) {
+
+			if ("success" == data.result) {
+				$(".subscribe").text("SUBSCRIBE");
+				$(".subscribe").attr("onClick","")
+				$(".subscribe").attr("data-toggle","modal")
+				
+			} else {
 				$(".notify").text("Some error Occured");
 			}
 		})
 		return true;
 	}
 	$.ajaxSetup({
-		  beforeSend : function(xhr, settings) {
-		    if (settings.type == 'POST' || settings.type == 'PUT'
-		        || settings.type == 'DELETE') {
-		      if (!(/^http:.*/.test(settings.url) || /^https:.*/
-		        .test(settings.url))) {
-		        // Only send the token to relative URLs i.e. locally.
-		        xhr.setRequestHeader("X-XSRF-TOKEN",
-		          Cookies.get('XSRF-TOKEN'));	
-		      }
-		    }
-		  }
-		});
+		beforeSend : function(xhr, settings) {
+			if (settings.type == 'POST' || settings.type == 'PUT'
+					|| settings.type == 'DELETE') {
+				if (!(/^http:.*/.test(settings.url) || /^https:.*/
+						.test(settings.url))) {
+					// Only send the token to relative URLs i.e. locally.
+					xhr.setRequestHeader("X-XSRF-TOKEN", Cookies
+							.get('XSRF-TOKEN'));
+				}
+			}
+		}
+	});
 	$.get("/error", function(data) {
-	    if (data) {
-	        $(".error").html(data);
-	    } else {
-	        $(".error").html('');
-	    }
+		if (data) {
+			$(".error").html(data);
+		} else {
+			$(".error").html('');
+		}
 	});
 </script>
 
 </head>
 <body>
-	<h1>Demo</h1>
+<style>
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+</style>
+	<h1>Codex Trees</h1>
+	
 	<div class="container">
 		<div class="container unauthenticated">
-			With Google: <a href="/oauth2/authorization/google">click here</a>
+		 <a href="/oauth2/authorization/google" class="google btn">
+          <i class="fa fa-google fa-fw"></i> Login with Google+
+        </a>
 		</div>
 		<div class="container authenticated" style="display: none">
 			Logged in as: <span id="user"></span>
 			<div>
 				<button onClick="logout()" class="btn btn-primary">Logout</button>
 			</div>
+
+			<!-- Button trigger modal -->
+				<button onClick="subscribeMail()" class="btn btn-primary subscribe" data-toggle=""
+				data-target="#exampleModalCenter">SUBSCRIBE</button>
 			
-			<div>
-				<button onClick="subscribeMail()" class="btn btn-primary subscribe">Subscribe</button>
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalCenterTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Unsubscribe mail from Codex Trees</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button onClick = "unsubscribeMail()" type="button" class="btn btn-primary">UNSUBSCRIBE</button>
+						</div>
+					</div>
+				</div>
 			</div>
+			
 		</div>
 		<div class="container text-danger error"></div>
 	</div>
+
+
 </body>
 </html>

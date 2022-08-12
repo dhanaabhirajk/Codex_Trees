@@ -44,4 +44,16 @@ public class RestHomeController {
 		}
 		return Collections.singletonMap("result", result);
     }
+	
+	@GetMapping("/unsubscribe")
+    public Map<String, Object> unsubscribe(@AuthenticationPrincipal OAuth2User principal) { 
+		String result;
+		try {
+			userService.disableMailNotification(principal.getAttribute("email"));
+			result =  "success";
+		}catch(Exception e) {
+			result =  e.getMessage();
+		}
+		return Collections.singletonMap("result", result);
+    }
 }
