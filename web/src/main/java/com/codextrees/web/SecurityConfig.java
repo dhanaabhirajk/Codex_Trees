@@ -35,34 +35,30 @@ public class SecurityConfig {
 			.exceptionHandling(e -> e
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 			)
-			.csrf(c -> c
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-			)
-			.logout(l -> l
-				.logoutSuccessUrl("/").permitAll()
-			)
-			.oauth2Login(o -> o
-					.failureHandler((request, response, exception) -> {
-						request.getSession().setAttribute("error.message", exception.getMessage());
-
-					})
-					)
-			.formLogin().and().oauth2Login().loginPage("/login")
-			.userInfoEndpoint()
-			.userService(oauthUserService)
-			.and()
-			.successHandler(new AuthenticationSuccessHandler() {
-
-				@Override
-				public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-						Authentication authentication) throws IOException, ServletException {
+			
+			.oauth2Login()
+		    .loginPage("/login")
+		    .userInfoEndpoint()
+		        .userService(oauthUserService)
+		    .and()
+		    .successHandler(new AuthenticationSuccessHandler() {
+		 
+		        @Override
+		        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+		                Authentication authentication) throws IOException, ServletException {
+		 
 
 					DefaultOidcUser oauthUser = (DefaultOidcUser) authentication.getPrincipal();
 					String email = oauthUser.getAttribute("email");
 					userService.processOAuthPostLogin(email);
 					response.sendRedirect("/");
-				}
-			}).defaultSuccessUrl("/subscribe");
+		        }
+		    }).and().csrf(c -> c
+					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+					)
+					.logout(l -> l
+						.logoutSuccessUrl("/").permitAll()
+					);
 		return http.build();
 	}
 	@Autowired

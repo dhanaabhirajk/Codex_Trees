@@ -18,6 +18,14 @@
 		$("#user").html(data.name);
 		$(".unauthenticated").hide()
 		$(".authenticated").show()
+		if(data != null){
+			if(data.user.enabled == true){
+				$(".subscribe").text("Subscribed");
+			}
+			else{
+				$(".subscribe").text("Subscribe");
+			}
+		}
 	});
 
 	var logout = function() {
@@ -25,6 +33,17 @@
 			$("#user").html('');
 			$(".unauthenticated").show();
 			$(".authenticated").hide();
+		})
+		return true;
+	}
+	var subscribeMail = function(){
+		$.get("/subscribe",function(data){
+			
+			if ("success" == data.result){
+				$(".subscribe").text("Subscribed");
+			}else{
+				$(".notify").text("Some error Occured");
+			}
 		})
 		return true;
 	}
@@ -36,7 +55,7 @@
 		        .test(settings.url))) {
 		        // Only send the token to relative URLs i.e. locally.
 		        xhr.setRequestHeader("X-XSRF-TOKEN",
-		          Cookies.get('XSRF-TOKEN'));
+		          Cookies.get('XSRF-TOKEN'));	
 		      }
 		    }
 		  }
@@ -61,6 +80,10 @@
 			Logged in as: <span id="user"></span>
 			<div>
 				<button onClick="logout()" class="btn btn-primary">Logout</button>
+			</div>
+			
+			<div>
+				<button onClick="subscribeMail()" class="btn btn-primary subscribe">Subscribe</button>
 			</div>
 		</div>
 		<div class="container text-danger error"></div>

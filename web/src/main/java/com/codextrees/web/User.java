@@ -19,10 +19,13 @@ public class User {
     private Long id;
  
     private String username;
+    
     @Enumerated(EnumType.STRING)
 	private Role role;
+    
     private boolean enabled;
     @Enumerated(EnumType.STRING)
+    
     private Provider provider;
  
     

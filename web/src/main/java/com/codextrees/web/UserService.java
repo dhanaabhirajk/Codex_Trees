@@ -1,10 +1,12 @@
 package com.codextrees.web;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class UserService implements UserDetailsService {
@@ -14,9 +16,9 @@ public class UserService implements UserDetailsService {
     
     public void processOAuthPostLogin(String username) {
         User existUser = userRepository.getUserByUsername(username);
-        MyUserDetails obj = (MyUserDetails) this.loadUserByUsername(username);
-       
+        
         if (existUser == null) {
+
             User newUser = new User();
             newUser.setUsername(username);
             newUser.setProvider(Provider.GOOGLE);
