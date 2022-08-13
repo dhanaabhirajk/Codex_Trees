@@ -1,2 +1,5 @@
 # Codex_Trees_Dev
-This Repo Is In Development For Learning community
+This Repository Is In Development For Learning community.
+
+Join With Us : https://t.me/codextree
+
