@@ -39,7 +39,7 @@
 		return true;
 	}
 	var subscribeMail = function() {
-		$.get("/subscribe", function(data) {
+		$.post("/subscribe", function(data) {
 
 			if ("success" == data.result) {
 				$(".subscribe").text("SUBSCRIBED");
@@ -54,12 +54,13 @@
 	}
 	
 	var unsubscribeMail = function() {
-		$.get("/unsubscribe", function(data) {
+		$.post("/unsubscribe", function(data) {
 
 			if ("success" == data.result) {
 				$(".subscribe").text("SUBSCRIBE");
-				$(".subscribe").attr("onClick","")
-				$(".subscribe").attr("data-toggle","modal")
+				$(".subscribe").attr("onClick","subscribeMail()")
+				$(".subscribe").attr("data-toggle","")
+				$("#exampleModalCenter").modal('hide');
 				
 			} else {
 				$(".notify").text("Some error Occured");
@@ -131,7 +132,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Close</button>
-							<button onClick = "unsubscribeMail()" type="button" class="btn btn-primary">UNSUBSCRIBE</button>
+							<button onClick = "unsubscribeMail()" type="button" class="btn btn-primary close" data-dismiss="">UNSUBSCRIBE</button>
 						</div>
 					</div>
 				</div>

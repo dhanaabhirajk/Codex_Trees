@@ -7,9 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -33,7 +36,7 @@ public class RestHomeController {
 	
 	@Autowired
 	private UserService userService;
-	@GetMapping("/subscribe")
+	@PostMapping("/subscribe")
     public Map<String, Object> subscribe(@AuthenticationPrincipal OAuth2User principal) { 
 		String result;
 		try {
@@ -45,7 +48,7 @@ public class RestHomeController {
 		return Collections.singletonMap("result", result);
     }
 	
-	@GetMapping("/unsubscribe")
+	@PostMapping("/unsubscribe")
     public Map<String, Object> unsubscribe(@AuthenticationPrincipal OAuth2User principal) { 
 		String result;
 		try {
@@ -56,4 +59,5 @@ public class RestHomeController {
 		}
 		return Collections.singletonMap("result", result);
     }
+	
 }
