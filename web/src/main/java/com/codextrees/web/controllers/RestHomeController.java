@@ -1,4 +1,4 @@
-package com.codextrees.web;
+package com.codextrees.web.controllers;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.codextrees.web.service.UserService;
 
 
 @RestController

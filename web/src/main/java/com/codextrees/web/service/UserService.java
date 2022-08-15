@@ -1,4 +1,4 @@
-package com.codextrees.web;
+package com.codextrees.web.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import com.codextrees.web.models.Provider;
+import com.codextrees.web.models.Role;
+import com.codextrees.web.models.User;
+import com.codextrees.web.repository.UserRepository;
 
 
 @Component

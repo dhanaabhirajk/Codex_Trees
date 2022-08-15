@@ -1,4 +1,4 @@
-package com.codextrees.web;
+package com.codextrees.web.models;
 
 //Importing required classes
 import lombok.AllArgsConstructor;

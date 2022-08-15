@@ -19,6 +19,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import com.codextrees.web.service.CustomOAuth2UserService;
+import com.codextrees.web.service.UserService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

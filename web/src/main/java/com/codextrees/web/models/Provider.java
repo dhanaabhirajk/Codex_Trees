@@ -1,4 +1,4 @@
-package com.codextrees.web;
+package com.codextrees.web.models;
 
 public enum Provider {
     LOCAL, GOOGLE

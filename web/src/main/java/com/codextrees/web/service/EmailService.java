@@ -1,4 +1,4 @@
-package com.codextrees.web;
+package com.codextrees.web.service;
 
 import java.io.File;
 import javax.mail.MessagingException;
@@ -11,6 +11,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.codextrees.web.models.EmailDetails;
+import com.codextrees.web.repository.UserRepository;
+
 //Annotation
 @Service
 //Class
@@ -18,10 +21,12 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
  @Autowired private JavaMailSender javaMailSender;
+ 
+ @Autowired
+ private UserRepository userRepository;
 
  @Value("${spring.mail.username}") private String sender;
 
- // Method 1
  // To send a simple email
  public String sendSimpleMail(EmailDetails details)
  {
@@ -38,7 +43,6 @@ public class EmailService {
          mailMessage.setTo(details.getRecipient());
          mailMessage.setText(details.getMsgBody());
          mailMessage.setSubject(details.getSubject());
-
          // Sending the mail
          javaMailSender.send(mailMessage);
          System.out.println("Mail Send...");
@@ -52,7 +56,34 @@ public class EmailService {
      }
  }
 
- // Method 2
+
+ public String sendMailAll(EmailDetails details){
+    try {
+
+        // Creating a simple mail message
+        SimpleMailMessage mailMessage
+            = new SimpleMailMessage();
+
+        // Setting up necessary details
+        mailMessage.setFrom(sender);
+        mailMessage.setCc(userRepository.getAllSubscribedUsernames());
+        mailMessage.setText(details.getMsgBody());
+        mailMessage.setSubject(details.getSubject());
+
+        // Sending the mail
+        javaMailSender.send(mailMessage);
+        System.out.println("Mail Send...");
+        return "Mail Sent Successfully to all...";
+    }
+
+    // Catch block to handle the exceptions
+    catch (Exception e) {
+        System.out.println("Mail Not Send...");
+        return "Error while Sending Mail";
+    }
+
+ }
+ 
  // To send an email with attachment
  public String
  sendMailWithAttachment(EmailDetails details)

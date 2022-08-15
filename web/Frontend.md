@@ -13,13 +13,13 @@ Starts with the [index page](/web/src/main/resources/static/index.html). It is t
 ###FLow
 >[Index.html](/web/src/main/resources/static/index.html)
 
-It is in static folder. It has two views with `authentication` and `without authentication`. After successful athentication, there are two roles [`ADMIN`](/web/src/main/java/com/codextrees/web/Role.java), [`USER`](/web/src/main/java/com/codextrees/web/Role.java). 
+It is in static folder. It has two views with `authentication` and `without authentication`. After successful athentication, there are two roles [`ADMIN`](/web/src/main/java/com/codextrees/web/models/Role.java), [`USER`](/web/src/main/java/com/codextrees/web/models/Role.java). 
 
-[`Users`](/web/src/main/java/com/codextrees/web/Role.java) are able to logout, subscribe and unsubscribe in the home page.
+[`Users`](/web/src/main/java/com/codextrees/web/models/Role.java) are able to logout, subscribe and unsubscribe in the home page.
 
->[sendMail.html](/web/src/main/resources/templates/sendMail.html)
+>[sendMailAll.html](/web/src/main/resources/templates/sendMailAll.html)
 
-It is the page where the [`ADMIN`](/web/src/main/java/com/codextrees/web/Role.java) is able to send mails to all the subscribed `Users`. To send mail to respective users, it is implemented with thymeleaf MVC.
+It is the page where the [`ADMIN`](/web/src/main/java/com/codextrees/web/models/Role.java) is able to send mails to all the subscribed `Users`. To send mail to respective users, it is implemented with thymeleaf MVC in [sendMail.html](/web/src/main/resources/templates/sendMail.html).
 
 >[contactForm.html](/web/src/main/resources/templates/contactForm.html) 
 
