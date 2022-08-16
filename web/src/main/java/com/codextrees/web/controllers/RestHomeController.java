@@ -22,6 +22,9 @@ import com.codextrees.web.service.UserService;
 public class RestHomeController {
 	@GetMapping("/user")
     public HashMap<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+		if(! (boolean) principal.getAttribute("name")){
+			return null;
+		}
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("name", principal.getAttribute("name"));
 		map.put("user",userService.loadUserByUsername(principal.getAttribute("email")));
