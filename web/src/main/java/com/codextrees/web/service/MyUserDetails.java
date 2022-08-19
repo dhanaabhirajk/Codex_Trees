@@ -1,11 +1,17 @@
 package com.codextrees.web.service;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
- 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.codextrees.web.models.Role;
 import com.codextrees.web.models.User;
  
 public class MyUserDetails implements UserDetails {
@@ -18,10 +24,10 @@ public class MyUserDetails implements UserDetails {
  
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().toString());
-        return Arrays.asList(authority);
+    	Set<Role> roleByUserId = user.getRoles();
+        final Set authorities = roleByUserId.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().toString().toUpperCase())).collect(Collectors.toSet());
+        return authorities;
     }
- 
  
     @Override
     public String getUsername() {

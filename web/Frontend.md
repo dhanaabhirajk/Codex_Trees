@@ -17,9 +17,9 @@ It is in static folder. It has two views with `authentication` and `without auth
 
 [`Users`](/web/src/main/java/com/codextrees/web/models/Role.java) are able to logout, subscribe and unsubscribe in the home page.
 
->[sendMailAll.html](/web/src/main/resources/templates/sendMailAll.html)
+>[sendMailAll.html](/web/src/main/resources/templates/admin/sendMailAll.html)
 
-It is the page where the [`ADMIN`](/web/src/main/java/com/codextrees/web/models/Role.java) is able to send mails to all the subscribed `Users`. To send mail to respective users, it is implemented with thymeleaf MVC in [sendMail.html](/web/src/main/resources/templates/sendMail.html).
+It is the page where the [`ADMIN`](/web/src/main/java/com/codextrees/web/models/Role.java) is able to send mails to all the subscribed `Users`. To send mail to respective users, it is implemented with thymeleaf MVC in [sendMail.html](/web/src/main/resources/templates/admin/sendMail.html).
 
 >[contactForm.html](/web/src/main/resources/templates/contactForm.html) 
 

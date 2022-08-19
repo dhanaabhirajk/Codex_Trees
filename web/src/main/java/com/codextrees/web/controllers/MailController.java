@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +23,12 @@ public class MailController {
 	
 	@Autowired private EmailService emailService;
 	
-	@RequestMapping("/sendmail")
+	@RequestMapping("/admin/sendmail")
 	public String sendSimpleMailForm(Model model) {
 		 model.addAttribute("details", new EmailDetails());
-		return "sendMail";
+		return "admin/sendMail";
 	}
-	@PostMapping("/sendmail")
+	@PostMapping("/admin/sendmail")
     @ResponseBody
     public String sendSimpleMail(@ModelAttribute("details") EmailDetails details){
 		String status = emailService.sendSimpleMail(details);
@@ -35,12 +36,12 @@ public class MailController {
 
     }
 	
-	@RequestMapping("/sendmailall")
+	@RequestMapping("/admin/sendmailall")
 	public String sendSimpleMailAllForm(Model model) {
 		 model.addAttribute("details", new EmailDetails());
-		return "sendMailAll";
+		return "admin/sendMailAll";
 	}
-	@PostMapping("/sendmailall")
+	@PostMapping("/admin/sendmailall")
     @ResponseBody
     public String sendMailAll(@ModelAttribute("details") EmailDetails details){
 		String status = emailService.sendMailAll(details);

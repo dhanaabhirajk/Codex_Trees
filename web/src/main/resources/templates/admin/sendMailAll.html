@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Send Mail</title>
+<title>Send Mail All</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width" />
 <base href="/" />
@@ -19,17 +19,11 @@
 </head>
 <body>
 
-	<h1>Send Mail</h1>
+	<h1>Send Mail to all</h1>
 	
 	<div class="container">
 		<div class="container unauthenticated">
-		 <form th:action = "@{/sendmailwithattachment}" th:object="${details}"  method = "post">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="recipient">Email</label>
-      <input type="email" class="form-control" id="recipient" th:field="*{recipient}" placeholder="Email">
-    </div>
-  </div>
+		 <form th:action = "@{/admin/sendmailall}" th:object="${details}"  method = "post">
   <div class="form-group">
     <label for="subject">Subject</label>
     <input type="text" class="form-control" id="subject" th:field="*{subject}" placeholder="Subject">
@@ -38,12 +32,6 @@
     <label for="messege">Messege</label>
     <input type="text" class="form-control" id="messege" th:field="*{msgBody}" placeholder="Type messege">
   </div>
-  
-  <div class="mb-3">
-    <label for="attachment" class="form-label">Attachment</label>
-    <input type="file" class="form-control" id="attachment" th:field="*{attachment}" >
-  </div>
-  
   <button type="submit" class="btn btn-primary">Send</button>
 </form>
 		</div>

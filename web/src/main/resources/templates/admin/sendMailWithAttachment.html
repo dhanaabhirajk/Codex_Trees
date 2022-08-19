@@ -23,7 +23,7 @@
 	
 	<div class="container">
 		<div class="container unauthenticated">
-		 <form th:action = "@{/sendmail}" th:object="${details}"  method = "post">
+		 <form th:action = "@{/admin/sendmailwithattachment}" th:object="${details}"  method = "post">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="recipient">Email</label>
@@ -38,6 +38,12 @@
     <label for="messege">Messege</label>
     <input type="text" class="form-control" id="messege" th:field="*{msgBody}" placeholder="Type messege">
   </div>
+  
+  <div class="mb-3">
+    <label for="attachment" class="form-label">Attachment</label>
+    <input type="file" class="form-control" id="attachment" th:field="*{attachment}" >
+  </div>
+  
   <button type="submit" class="btn btn-primary">Send</button>
 </form>
 		</div>

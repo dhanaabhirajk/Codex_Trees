@@ -6,34 +6,44 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 
 import com.codextrees.web.models.Provider;
 import com.codextrees.web.models.Role;
+import com.codextrees.web.models.RoleType;
 import com.codextrees.web.models.User;
+import com.codextrees.web.repository.RoleRepository;
 import com.codextrees.web.repository.UserRepository;
 
 
 @Component
+@Service
+
 public class UserService implements UserDetailsService {
  
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepo;
     
     public void processOAuthPostLogin(String username) {
-        User existUser = userRepository.getUserByUsername(username);
-        
-        if (existUser == null) {
-
+    	User existUser = userRepository.getUserByUsername(username);
+    	if (existUser == null) {
+    		userRepository.save(getNewUser(username));
+    	}
+    }
+    
+    
+    public User getNewUser(String username) {        	
+        	Role roleAdmin = roleRepo.findByName(RoleType.USER);
             User newUser = new User();
             newUser.setUsername(username);
             newUser.setProvider(Provider.GOOGLE);
-            newUser.setEnabled(false);  
-            newUser.setRole(Role.USER);	
-            userRepository.save(newUser);        
-        }
-         
+            newUser.setEnabled(false);	
+            newUser.addRole(roleAdmin);
+            return newUser;
     }
-    
     public void enableMailNotification(String username) {
     	User user = userRepository.getUserByUsername(username);
     	userRepository.changeMailNotification(true,user.getId());
@@ -42,6 +52,7 @@ public class UserService implements UserDetailsService {
     	User user = userRepository.getUserByUsername(username);
     	userRepository.changeMailNotification(false,user.getId());
     }
+   
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
@@ -50,7 +61,6 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
-         
         return new MyUserDetails(user);
     }
  

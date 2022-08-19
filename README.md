@@ -49,7 +49,7 @@ The flow goes in the given order.
 - [SQLite Dialect](/web/src/main/java/com/codextrees/web/dialect/SQLiteDialect.javas) includes the SQLite code
  
 - [Frontend Readme](/web/Frontend.md) gives the outline for starting with forntend.
-####**Custom Oauth files**
+####**Custom Oauth files not needed now**
 - Custom Oauth [User](/web/src/main/java/com/codextrees/web/models/CustomOAuth2User.java) and [service](/web/src/main/java/com/codextrees/web/service/CustomOAuth2UserService.java) is given to provide custom functions.
 
 ####**User files**
@@ -60,8 +60,15 @@ The flow goes in the given order.
 
 - [User Repository](/web/src/main/java/com/codextrees/web/repository/UserRepository.java) contains the query executions that need to be executed in the database.
 
-- User [Role](/web/src/main/java/com/codextrees/web/models/Role.java) enumeration has `ADMIN` ,`USER`.
 - User [Provider](/web/src/main/java/com/codextrees/web/models/Provider.java) enumeration has `GOOGLE`, `LOCAL`.
+
+
+####**Role Files**
+- [Role Repository](/web/src/main/java/com/codextrees/web/repository/RoleRepository.java) contains the query executions that need to be executed in the roles table.
+
+- User [Role](/web/src/main/java/com/codextrees/web/models/Role.java) has the role id and role name.
+
+- User [RoleType](/web/src/main/java/com/codextrees/web/models/RoleType.java) enumeration has `ADMIN` ,`USER`.
 
 ####**Email sender files**
 

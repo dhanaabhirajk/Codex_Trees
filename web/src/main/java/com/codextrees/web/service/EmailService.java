@@ -45,13 +45,11 @@ public class EmailService {
          mailMessage.setSubject(details.getSubject());
          // Sending the mail
          javaMailSender.send(mailMessage);
-         System.out.println("Mail Send...");
          return "Mail Sent Successfully...";
      }
 
      // Catch block to handle the exceptions
      catch (Exception e) {
-    	 System.out.println("Mail Not Send...");
          return "Error while Sending Mail";
      }
  }
@@ -72,13 +70,11 @@ public class EmailService {
 
         // Sending the mail
         javaMailSender.send(mailMessage);
-        System.out.println("Mail Send...");
         return "Mail Sent Successfully to all...";
     }
 
     // Catch block to handle the exceptions
     catch (Exception e) {
-        System.out.println("Mail Not Send...");
         return "Error while Sending Mail";
     }
 

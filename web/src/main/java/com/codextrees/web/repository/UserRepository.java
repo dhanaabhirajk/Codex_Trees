@@ -1,7 +1,6 @@
 package com.codextrees.web.repository;
 
 
-import java.util.List;
 
 import javax.transaction.Transactional;
 

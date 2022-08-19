@@ -1,38 +1,40 @@
 package com.codextrees.web;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
+import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-
-import com.codextrees.web.service.CustomOAuth2UserService;
 import com.codextrees.web.service.UserService;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
-
+	@Autowired
+	private UserService userService;
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error", "/webjars/**").permitAll()
-				
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/role").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.exceptionHandling(e -> e
@@ -42,21 +44,10 @@ public class SecurityConfig {
 			.oauth2Login()
 		    .loginPage("/login")
 		    .userInfoEndpoint()
-		        .userService(oauthUserService)
+		    .oidcUserService(this.oidcUserService())
 		    .and()
-		    .successHandler(new AuthenticationSuccessHandler() {
-		 
-		        @Override
-		        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-		                Authentication authentication) throws IOException, ServletException {
-		 
-
-					DefaultOidcUser oauthUser = (DefaultOidcUser) authentication.getPrincipal();
-					String email = oauthUser.getAttribute("email");
-					userService.processOAuthPostLogin(email);
-					response.sendRedirect("/");
-		        }
-		    }).and().csrf(c -> c
+		    .defaultSuccessUrl("/")
+		    .and().csrf(c -> c
 					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 					)
 					.logout(l -> l
@@ -64,10 +55,25 @@ public class SecurityConfig {
 					);
 		return http.build();
 	}
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private CustomOAuth2UserService oauthUserService;
+	
+	private OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService() {
+		final OidcUserService delegate = new OidcUserService();
 
+		return (userRequest) -> {
+			// Delegate to the default implementation for loading a user
+			OidcUser oidcUser = delegate.loadUser(userRequest);
+			userService.processOAuthPostLogin(oidcUser.getEmail());
+			
+			Collection<? extends GrantedAuthority> mappedAuthorities = userService.loadUserByUsername(oidcUser.getEmail()).getAuthorities();
 
+			
+			oidcUser = new DefaultOidcUser(mappedAuthorities, oidcUser.getIdToken(), oidcUser.getUserInfo());
+			
+			System.out.println(oidcUser.getAuthorities());
+			return oidcUser;
+		};
+	}
+	
+	
+	
 }
