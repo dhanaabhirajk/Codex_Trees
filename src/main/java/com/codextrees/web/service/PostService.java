@@ -11,11 +11,17 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepo;
 	
-	public void processPost(Post post) {
-		postRepo.save(post);
+	public String createPost(Post post) {
+		try {
+			postRepo.save(post);
+			return "success";
+		}
+		catch(Exception e) {
+			return "not success"+e.getMessage();
+		}
 	}
 	
-	public Post getLatestPost(Long id) {
+	public Post getLatestPost() {
 		return postRepo.getLatestPost();
 	}
 }

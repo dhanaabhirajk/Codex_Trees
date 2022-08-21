@@ -1,0 +1,57 @@
+
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Create Post</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+
+
+</head>
+<body>
+
+	<h1>Create Post</h1>
+	
+	<div class="container">
+		<div class="container authenticated">
+		 <form th:action = "@{/post/createpost}" th:object="${postdetails}"  method = "post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="image_link">Image Link</label>
+      <input type="text" class="form-control" id="image_link" th:field="*{image_link}" placeholder="Image Link">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="tile">Title</label>
+      <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="messege">Messege</label>
+    <input type="text" class="form-control" id="messege" th:field="*{msgBody}" placeholder="Type messege">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="link">Link</label>
+      <input type="text" class="form-control" id="link" th:field="*{link}" placeholder="Link">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
+		</div>
+		<div class="container text-danger error"></div>
+	</div>
+
+
+</body>
+</html>

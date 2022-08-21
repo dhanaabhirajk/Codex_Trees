@@ -3,6 +3,7 @@ package com.codextrees.web.models;
 import javax.persistence.*;
 
 import org.joda.time.DateTime;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Post {
@@ -10,10 +11,32 @@ public class Post {
 	@Column(name = "post_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	private String title;
+	private String link;
 	private String msgBody;
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdAt;
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime updatedAt;
 	private String image_link;
+	
+	
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	
 	public DateTime getCreatedAt() {
 		return createdAt;

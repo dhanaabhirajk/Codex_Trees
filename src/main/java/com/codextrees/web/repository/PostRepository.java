@@ -11,8 +11,9 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
    
    @Query("SELECT p FROM Post p WHERE p.createdAt = :date")
-   public Post getPostById(@Param("date") DateTime date);
+   public Post getPostByDate(@Param("date") DateTime date);
 
-   @Query("SELECT p FROM Post p ORDER BY u.createdAt DESC")
+   //used native query so p is not used and column name is created_at as in table
+   @Query(value = "SELECT * FROM Post ORDER BY created_at DESC LIMIT 1",nativeQuery = true)
    public Post getLatestPost();
 }

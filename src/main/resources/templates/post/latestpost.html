@@ -1,0 +1,37 @@
+
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Latest Post</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+
+
+</head>
+<body>
+
+	<h1>Latest Post</h1>
+	<div th:object="${postdetails}">
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" th:src="*{image_link}"
+				alt="Card image cap">
+			<div class="card-body">
+				<h5 th:text="*{title}" class="card-title"></h5>
+				<p th:text="*{msgBody}" class="card-text"></p>
+				<a th:href="*{link}" class="btn btn-primary">Refer link</a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
