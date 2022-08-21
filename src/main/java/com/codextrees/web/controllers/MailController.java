@@ -28,6 +28,7 @@ public class MailController {
 		 model.addAttribute("details", new EmailDetails());
 		return "admin/sendMail";
 	}
+	
 	@PostMapping("/admin/sendmail")
     @ResponseBody
     public String sendSimpleMail(@ModelAttribute("details") EmailDetails details){

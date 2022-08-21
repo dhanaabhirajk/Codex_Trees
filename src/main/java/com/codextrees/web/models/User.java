@@ -34,8 +34,8 @@ public class User {
     private Set<Role> roles = new HashSet<>();
     
     private boolean enabled;
-    @Enumerated(EnumType.STRING)
     
+    @Enumerated(EnumType.STRING)
     private Provider provider;
  
     

@@ -34,7 +34,6 @@ public class SecurityConfig {
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error", "/webjars/**").permitAll()
 				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/role").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.exceptionHandling(e -> e
@@ -69,7 +68,6 @@ public class SecurityConfig {
 			
 			oidcUser = new DefaultOidcUser(mappedAuthorities, oidcUser.getIdToken(), oidcUser.getUserInfo());
 			
-			System.out.println(oidcUser.getAuthorities());
 			return oidcUser;
 		};
 	}

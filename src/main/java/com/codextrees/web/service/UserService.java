@@ -36,12 +36,12 @@ public class UserService implements UserDetailsService {
     
     
     public User getNewUser(String username) {        	
-        	Role roleAdmin = roleRepo.findByName(RoleType.USER);
+        	Role roleUser = roleRepo.findByName(RoleType.USER);
             User newUser = new User();
             newUser.setUsername(username);
             newUser.setProvider(Provider.GOOGLE);
             newUser.setEnabled(false);	
-            newUser.addRole(roleAdmin);
+            newUser.addRole(roleUser);
             return newUser;
     }
     public void enableMailNotification(String username) {
