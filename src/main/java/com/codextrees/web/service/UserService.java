@@ -27,18 +27,21 @@ public class UserService implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepo;
     
-    public void processOAuthPostLogin(String username) {
+    public void processOAuthPostLogin(String username,String name) {
     	User existUser = userRepository.getUserByUsername(username);
     	if (existUser == null) {
-    		userRepository.save(getNewUser(username));
+    		userRepository.save(getNewUser(username,name));
     	}
     }
     
-    
-    public User getNewUser(String username) {        	
+    public User getUser(String username) {
+    	return userRepository.getUserByUsername(username);
+    }
+    public User getNewUser(String username,String name) {        	
         	Role roleUser = roleRepo.findByName(RoleType.USER);
             User newUser = new User();
             newUser.setUsername(username);
+            newUser.setName(name);
             newUser.setProvider(Provider.GOOGLE);
             newUser.setEnabled(false);	
             newUser.addRole(roleUser);

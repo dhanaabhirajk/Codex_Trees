@@ -18,6 +18,8 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import com.codextrees.web.common.UnauthenticatedRequestHandler;
 import com.codextrees.web.service.UserService;
 
 @Configuration
@@ -26,18 +28,23 @@ import com.codextrees.web.service.UserService;
 public class SecurityConfig {
 	@Autowired
 	private UserService userService;
+	@Bean
+	UnauthenticatedRequestHandler unauthenticatedRequestHandler() {
+	    return new UnauthenticatedRequestHandler();
+	}
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http
 		.authorizeRequests(a -> a
-				.antMatchers("/", "/error", "/webjars/**","/post/latestpost").permitAll()
-				.antMatchers("/admin/**","/post/createpost").hasRole("ADMIN")
+				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**").permitAll()
+				.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.exceptionHandling(e -> e
-				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+				.authenticationEntryPoint(unauthenticatedRequestHandler())
+				.accessDeniedPage("/accessdenied.html")
 			)
 			
 			.oauth2Login()
@@ -47,7 +54,8 @@ public class SecurityConfig {
 		    .and()
 		    .defaultSuccessUrl("/")
 		    .and().csrf(c -> c
-					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()
+							)
 					)
 					.logout(l -> l
 						.logoutSuccessUrl("/").permitAll()
@@ -61,7 +69,7 @@ public class SecurityConfig {
 		return (userRequest) -> {
 			// Delegate to the default implementation for loading a user
 			OidcUser oidcUser = delegate.loadUser(userRequest);
-			userService.processOAuthPostLogin(oidcUser.getEmail());
+			userService.processOAuthPostLogin(oidcUser.getEmail(),oidcUser.getAttribute("name"));
 			
 			Collection<? extends GrantedAuthority> mappedAuthorities = userService.loadUserByUsername(oidcUser.getEmail()).getAuthorities();
 

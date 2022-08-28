@@ -14,7 +14,7 @@
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
-
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
 <body>
@@ -22,16 +22,86 @@
 	<h1>Latest Post</h1>
 	<div th:object="${postdetails}">
 		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" th:src="*{image_link}"
-				alt="Card image cap">
+			<img class="card-img-top" th:src="*{image_link}" alt="Card image cap">
 			<div class="card-body">
 				<h5 th:text="*{title}" class="card-title"></h5>
 				<p th:text="*{msgBody}" class="card-text"></p>
 				<a th:href="*{link}" class="btn btn-primary">Refer link</a>
 			</div>
 		</div>
+
+		<div class="authenticated">
+			<div class="container">
+				<div class="container authenticated">
+					<form id="commentform" class="needs-validation"
+						th:action="@{/comment/createcomment}"
+						th:object="${commentdetails}" method="post" novalidate>
+
+						<div class="form-group">
+							<label for="messege">Comments </label> <input type="hidden"
+								name="postId" th:value="${postdetails.id}"> <input
+								type="text" class="form-control" id="messege"
+								th:field="*{msgBody}" placeholder="Add a comment." required>
+							<div class="invalid-feedback">Enter a valid Comment</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Comment</button>
+					</form>
+				</div>
+				<div id="snackbar"></div>
+			</div>
+
+		</div>
+		<div>
+			<div id="comments">
+				<div th:each='commentdetails : ${postdetails.getComments()}'>
+					<div th:object='${commentdetails}' class='col-sm-6'>
+						<div class='card' style='width: 18rem;'>
+							<div class='card-body'>
+							
+								<h5 th:text="*{username}" class="card-title"></h5>
+								<p th:text='*{msgBody}' class='card-text'></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
 
 
+	<script>
+		
+		function showSnackbar(text) {
+			var snackBar = document.getElementById("snackbar");
+			snackbar.innerHTML = text;
+			snackBar.className = "show-bar";
+			setTimeout(
+					function() {
+						snackBar.className = snackBar.className.replace(
+								"show-bar", "");
+
+					}, 5000);
+		}
+
+		var frm = $('#commentform');
+
+		frm.submit(function(e) {
+
+			e.preventDefault();
+			console.log(frm.serialize());
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					showSnackbar(data);
+				},
+				error : function(data) {
+					showsnackbar(data)
+				},
+			});
+		});
+	</script>
 </body>
 </html>

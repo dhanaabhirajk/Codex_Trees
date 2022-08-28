@@ -24,8 +24,15 @@ public class User {
     private Long id;
  
     private String username;
-    
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private String name;
+    public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

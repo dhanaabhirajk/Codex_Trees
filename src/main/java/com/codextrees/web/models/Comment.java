@@ -1,31 +1,68 @@
 package com.codextrees.web.models;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
 @Entity
 public class Comment {
-    @Id
+
+	@Id
     @Column(name = "comment_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @JoinColumn(name = "id",referencedColumnName = "user_id",nullable = false)
-    private long user_id;
-//    private long post_id;
-    private String comment_msg;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id",nullable = false)
+    private User user;
+    
+    private String msgBody;
 
-    private DateTime createdAt;
-    private DateTime updatedAt;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	private DateTime createdAt;
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	private DateTime updatedAt;
+    
+    @ManyToOne
+    @JoinColumn(name = "post_id",referencedColumnName = "post_id",nullable = false)
+    private Post post;
+    
+    public Post getPost() {
+		return post;
+	}
+
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
+
+	public String getMsgBody() {
+		return msgBody;
+	}
+
+
+	public void setMsgBody(String msgBody) {
+		this.msgBody = msgBody;
+	}
+
+
+    
+    public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+    
 
     public long getId() {
         return id;
     }
 
-    public long getUser_id() {
-        return user_id;
-    }
 
     public DateTime getCreatedAt() {
         return createdAt;
@@ -39,21 +76,11 @@ public class Comment {
         this.id = id;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
-    }
-
     public void setCreatedAt(DateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getComment_msg() {
-        return comment_msg;
-    }
-
-    public void setComment_msg(String comment_msg) {
-        this.comment_msg = comment_msg;
-    }
+   
 
     public void setUpdatedAt(DateTime updatedAt) {
         this.updatedAt = updatedAt;
