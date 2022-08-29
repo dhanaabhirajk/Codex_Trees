@@ -21,10 +21,10 @@ public class PostService {
 	public String createPost(Post post) {
 		try {
 			postRepo.save(post);
-			return "success";
+			return "Post Added";
 		}
 		catch(Exception e) {
-			return "not success"+e.getMessage();
+			return "Some Error Occured";
 		}
 	}
 	

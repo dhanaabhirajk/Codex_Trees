@@ -17,6 +17,7 @@ public class Comment {
     @JoinColumn(name = "user_id",referencedColumnName = "user_id",nullable = false)
     private User user;
     
+    @Column(columnDefinition="TEXT")
     private String msgBody;
 
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")

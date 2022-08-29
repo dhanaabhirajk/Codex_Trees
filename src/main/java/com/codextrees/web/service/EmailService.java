@@ -64,7 +64,7 @@ public class EmailService {
 
         // Setting up necessary details
         mailMessage.setFrom(sender);
-        mailMessage.setCc(userRepository.getAllSubscribedUsernames());
+        mailMessage.setBcc(userRepository.getAllSubscribedUsernames());
         mailMessage.setText(details.getMsgBody());
         mailMessage.setSubject(details.getSubject());
 

@@ -11,10 +11,11 @@ import org.hibernate.annotations.Type;
 public class Post {
 	@Id
 	@Column(name = "post_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String link;
+	@Column(columnDefinition="TEXT")
 	private String msgBody;
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdAt;
