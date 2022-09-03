@@ -29,7 +29,7 @@
 			<div class="card-body">
 				<h5 th:text="*{title}" class="card-title"></h5>
 				<p th:text="*{msgBody}" class="card-text"></p>
-				<a th:href="*{link}" class="btn btn-primary">Refer link</a>
+				<a th:href="*{link}" th:text="*{link_title}" class="streched-link font-weight-bold"></a>
 			</div>
 		</div>
 	</div>

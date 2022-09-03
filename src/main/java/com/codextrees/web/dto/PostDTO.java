@@ -10,6 +10,15 @@ public class PostDTO {
 	private Long id;
 	private String title;
 	private String link;
+	private String link_title;
+	public String getLink_title() {
+		return link_title;
+	}
+
+	public void setLink_title(String link_title) {
+		this.link_title = link_title;
+	}
+
 	private String msgBody;
 	private DateTime createdAt;
 	public Long getId() {

@@ -1,8 +1,11 @@
 package com.codextrees.web.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +23,12 @@ public class PostService {
 	
 	public String createPost(Post post) {
 		try {
+			try {
+				Document doc = Jsoup.connect(post.getLink()).get();
+				post.setLink_title(doc.title());
+			} catch (IOException e) {
+				post.setLink_title(post.getTitle());
+			}
 			postRepo.save(post);
 			return "Post Added";
 		}
@@ -55,6 +64,10 @@ public class PostService {
 		postDTO.setTitle(post.getTitle());
 		postDTO.setMsgBody(post.getMsgBody());
 		postDTO.setLink(post.getLink());
+		
+		
+		postDTO.setLink_title(post.getLink_title());
+		postDTO.setImage_link(post.getImage_link());
 		postDTO.setCreatedAt(post.getCreatedAt());
 		
 		List<CommentDTO> commentDTOList = new ArrayList<CommentDTO>();

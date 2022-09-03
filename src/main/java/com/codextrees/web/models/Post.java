@@ -15,13 +15,23 @@ public class Post {
 	private Long id;
 	private String title;
 	private String link;
+	private String link_title;
 	@Column(columnDefinition="TEXT")
 	private String msgBody;
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime createdAt;
+	public String getLink_title() {
+		return link_title;
+	}
+
+	public void setLink_title(String link_title) {
+		this.link_title = link_title;
+	}
+
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime updatedAt;
 	private String image_link;
+	
 	
 	@OneToMany(mappedBy = "post",fetch = FetchType.LAZY)
 	private List<Comment> comments = new ArrayList<Comment>();
