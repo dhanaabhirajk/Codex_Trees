@@ -1,8 +1,14 @@
 package com.codextrees.web.service;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
+
+import freemarker.template.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -10,8 +16,12 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import com.codextrees.web.models.EmailDetails;
+import com.codextrees.web.models.Post;
 import com.codextrees.web.repository.UserRepository;
 
 //Annotation
@@ -24,7 +34,14 @@ public class EmailService {
  
  @Autowired
  private UserRepository userRepository;
+// @Autowired     
+// private Configuration fmConfiguration;
 
+
+ @Autowired
+ private SpringTemplateEngine templateEngine;
+ @Autowired
+ private PostService postService;
  @Value("${spring.mail.username}") private String sender;
 
  // To send a simple email
@@ -77,8 +94,64 @@ public class EmailService {
     catch (Exception e) {
         return "Error while Sending Mail";
     }
-
  }
+ 
+ 
+ 
+ 
+ 
+ 
+//Post
+ //
+ public String sendMailPost(EmailDetails details,boolean all)
+ {
+	 MimeMessage mimeMessage
+     = javaMailSender.createMimeMessage();
+ MimeMessageHelper mimeMessageHelper;
+
+ try {
+     mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+     mimeMessageHelper.setFrom(sender);
+     if(all) {
+    	 mimeMessageHelper.setBcc(userRepository.getAllSubscribedUsernames());
+     }else {
+    	 mimeMessageHelper.setTo(details.getRecipient());
+     }
+     
+     Post post = postService.getLatestPost();
+     HashMap<String,Object> model = new HashMap<>();
+     model.put("postdetails", post);
+     
+     Context context = new Context();
+     context.setVariables(model);
+     String html = templateEngine.process("email/post_template", context);
+     mimeMessageHelper.setText(html,true);
+     //mimeMessageHelper.setText(geContentFromTemplate(model),true);
+     mimeMessageHelper.setSubject(post.getTitle());
+
+     javaMailSender.send(mimeMessage);
+     return "success";
+ }
+
+ catch (Exception e) {
+     return "Error while sending mail!!!";
+ }
+ }
+ 
+// public String geContentFromTemplate(Map < String, Object >model)     { 
+//     StringBuffer content = new StringBuffer();
+//
+//     try {
+//         content.append(FreeMarkerTemplateUtils.processTemplateIntoString(fmConfiguration.getTemplate("email/post_template.flth"), model));
+//     } catch (Exception e) {
+//         e.printStackTrace();
+//     }
+//     return content.toString();
+// }
+
+ 
+ 
+ 
  
  // To send an email with attachment
  public String

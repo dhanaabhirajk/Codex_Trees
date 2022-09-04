@@ -34,7 +34,6 @@ public class MailController {
     public String sendSimpleMail(@ModelAttribute("details") EmailDetails details){
 		String status = emailService.sendSimpleMail(details);
 		return status;
-
     }
 	
 	@RequestMapping("/admin/sendmailall")
@@ -48,6 +47,27 @@ public class MailController {
 		String status = emailService.sendMailAll(details);
 		return status;
 
+    }
+	
+	@RequestMapping("/admin/sendmailpost")
+	public String sendMailPostForm(Model model) {
+		 model.addAttribute("details", new EmailDetails());
+		return "admin/sendmailpost";
+	}
+	
+	@PostMapping("/admin/sendmailpost")
+    @ResponseBody
+    public String sendMailPost(@ModelAttribute("details") EmailDetails details){
+		String status = emailService.sendMailPost(details,false);
+		return status;
+    }
+	
+	@PostMapping("/admin/sendmailpostall")
+	@ResponseBody
+    public String sendMailPostAll(){
+		EmailDetails details = new EmailDetails();
+		String status = emailService.sendMailPost(details,true);
+		return status;
     }
 	
 //	@RequestMapping("/sendmailwithattachment")
