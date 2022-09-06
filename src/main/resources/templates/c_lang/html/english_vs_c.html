@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>intro</title>
+      <title>english_vs_c</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -7,7 +7,7 @@
       
       
       
-      
+      <script type="text/javascript" src="file:///c:\Users\student\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.3\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
       
       
       
@@ -261,34 +261,97 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="introduction-to-c-programming-language">Introduction to C Programming Language</h1>
+      <h1 class="mume-header" id="difference-between-english-and-c-language">Difference between English and C language</h1>
 
 <hr>
-<h3 class="mume-header" id="why-programming-is-here">Why Programming is here?</h3>
+<h3 class="mume-header" id="english-vs-c">English vs C</h3>
 
-<pre data-role="codeBlock" data-info class="language-"><code> To communicate with Operating System.
-</code></pre><h3 class="mume-header" id="why-interview-questions-have-code-writing-and-finding-output">Why <code>interview Questions</code> have <code>code writing</code> and <code>finding output</code> ?</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">English</th>
+<th style="text-align:left">C Programming</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Alphabets <br> - <em>a,b,c,...z</em></td>
+<td style="text-align:left">keywords <br> <em>int, float, char</em></td>
+</tr>
+<tr>
+<td style="text-align:left">Words <br>- <em>more than 10K</em></td>
+<td style="text-align:left">Operators <br>  <em>+  - *  / %</em></td>
+</tr>
+<tr>
+<td style="text-align:left">Sentences <br> - Grammar (set of rules)  &#x1F534; &#x1F7E1; &#x1F7E2;</td>
+<td style="text-align:left">Separators <br> <em>; { }</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>Keywords</code> are like alphabets in english language. keywords are <code>reserved words</code> meant for specific purpose.</li>
+<li><code>Operators</code> are used to perform <code>computation</code>. They are like words in English. This is used to construct the words.</li>
+<li><code>Separator</code> are used to break into lines like <code>full stops</code> in english.</li>
+</ul>
+<h3 class="mume-header" id="constants">Constants</h3>
 
-<p>Let&apos;s take you are hired in Microsoft. You are as Windows 13 developer.</p>
-<p><em>Will you develop the windows 13 from scratch?</em><br>
-&#xA0; The answer is no. You&apos;ll use the previous version of Windows 11 modules to develop windows 13.</p>
-<pre data-role="codeBlock" data-info class="language-"><code>- Output finding helps the programmar to understand the previously written code.
-- Writing the Code with the given output makes us eligible to write new code feasible 
-     to the previous versions.
-</code></pre><h3 class="mume-header" id="how-do-you-sort-a-collection-of-numbers">How do you sort a collection of numbers?</h3>
-
-<p>There are many techniques to sort numbers using programming. For example, Selection sort, Bubble sort, Radix sort, Insertion sort, Merge sort, Quick sort and many more.</p>
-<p><em>Why there are many techniques to sort numbers?</em><br>
-&#xA0;We need to check the feasablity in which situation which algorithm is best to use. It can be find by applying in many use cases <code>Applied Research</code>.</p>
+<div class="mermaid">  graph TD;
+      A(Constants)--&gt;B(Integer Constants);
+      A--&gt;C(Real Constants);
+      A--&gt;D(Character Constants);
+      B--&gt;E[5&lt;br&gt;-5&lt;br&gt;0&lt;br&gt;8&lt;br&gt;1000];
+      C--&gt;F[2.75&lt;br&gt;-7.12&lt;br&gt;9.17&lt;br&gt;0.0];
+      D--&gt;G[&apos;a&apos;&lt;br&gt;&apos;4&apos;&lt;br&gt;&apos;A&apos;&lt;br&gt;&apos;+&apos;&lt;br&gt;&apos;z&apos;];
+      
+</div><p>They are classified into <code>Integer</code> , <code>real</code>, <code>Character</code> constants.</p>
+<ul>
+<li><code>Integers constants</code> are numbers like count of chocalates but it can be in both <code>positive</code> and <code>negative</code></li>
+<li><code>Real constants</code> are numbers with floating points. Floating means the number is <code>not fixed and floats</code> so it is called floating point.</li>
+<li><code>Character constants</code> are <code>single characters</code> within single quotes</li>
+</ul>
+<p>Examples of invalid character constants: &apos;Hi&apos; ,&apos;9.0&apos;,&apos;Ritche&apos;</p>
 <hr>
-<p>You are completed with this post &#x1F973;. Let&apos;s move to the next post <a href="%22/c-lang/english_vs_c.html%22">Difference between English and C language</a></p>
+<p>You are completed with this post &#x1F973;. Let&apos;s move to the next post <a href="%22%22">Difference between English and C language</a></p>
 
       </div>
       
       
     
     
-    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
     
     
     
