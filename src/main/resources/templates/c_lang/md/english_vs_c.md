@@ -46,4 +46,4 @@ For example,
 &nbsp; The cost of one stock is 350.75 rupees - 350.75 is `float`
 
 ---
- You are completed with this post 🥳. Let's move to the next post [Assignment Operator]("/c-lang/assignment-operator")
+ You are completed with this post 🥳. Let's move to the next post [Assignment Operator](/c-lang/assignment-operator)

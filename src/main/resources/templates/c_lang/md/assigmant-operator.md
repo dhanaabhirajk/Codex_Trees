@@ -83,4 +83,4 @@ a = 4 + 3 + 2;
 > a = 9
 
 ---
- You are completed with this post 🥳. Let's move to the next post [Operators]("/c-lang/operators")
+ You are completed with this post 🥳. Let's move to the next post [Operators](/c-lang/operators)
