@@ -20,7 +20,7 @@
       A-->D(Character Constants);
       B-->E[5<br>-5<br>0<br>8<br>1000];
       C-->F[2.75<br>-7.12<br>9.17<br>0.0];
-      D-->G['a'<br>'4'<br>'A'<br>'+'<br>'z'];
+      D-->G['a'<br>'4'<br>' A'<br>'+'<br>'z'];
       
 ```
 They are classified into `Integer` , `real`, `Character` constants.
@@ -30,5 +30,20 @@ They are classified into `Integer` , `real`, `Character` constants.
 
 Examples of invalid character constants: 'Hi' ,'9.0','Ritche'
 
+###Fundamental Datatypes
+
+Any data / information can represented using
+- int -> `%d` (0 or 1) -> `%i`
+- float -> `%f`
+- char -> `%c`
+
+```mermaid
+flowchart LR
+    A(int<br>float<br>char)-->B(Frimitive<br>Fundamental<br>Primary<br>Basic datatypes)
+```
+For example, 
+&nbsp;  The cost of pen is 10 rupees. - 10 is `int`
+&nbsp; The cost of one stock is 350.75 rupees - 350.75 is `float`
+
 ---
- You are completed with this post 🥳. Let's move to the next post [Assignment Operator]("https://codextrees.herokuapp.com/c-lang/assignment-operator")
+ You are completed with this post 🥳. Let's move to the next post [Assignment Operator]("/c-lang/assignment-operator")
