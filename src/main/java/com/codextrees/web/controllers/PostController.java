@@ -45,7 +45,7 @@ public class PostController {
 		Comment comment = new Comment();
 		//comment.setPost(post);
 		model.addAttribute("commentdetails", comment);
-		return "post/latestpost";
+		return "post/newlatestpost";
 	}
 	
 	@RequestMapping("/post/getposts")

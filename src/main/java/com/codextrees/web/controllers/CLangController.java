@@ -11,7 +11,7 @@ import com.codextrees.web.models.Comment;
 public class CLangController {
 
 	@RequestMapping("/c-lang/{topic}")
-	public String getCLangTopic(@PathVariable("") String topic) {
+	public String getCLangTopic(@PathVariable("topic") String topic) {
 		return "c_lang/html/"+topic+".html";
 	}
 }

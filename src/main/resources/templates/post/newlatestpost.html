@@ -1,14 +1,24 @@
-<!DOCTYPE html>
 
-<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office"
-	xmlns:v="urn:schemas-microsoft-com:vml" xmlns:th="https://www.thymeleaf.org">
-
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-<title></title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Latest Post</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]-->
-<!--[if !mso]><!-->
+
 <link href="https://fonts.googleapis.com/css?family=Bitter"
 	rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Oswald"
@@ -96,11 +106,16 @@ p {
 
 <body
 	style="background-color: #FFFFFF; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+	
+	<h1>Latest Post</h1>
+	<div  th:object="${postdetails}" >
+		
+	
 	<table border="0" cellpadding="0" cellspacing="0" class="nl-container"
 		role="presentation"
 		style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF;"
 		width="100%">
-		<tbody th:object="${postdetails}">
+		<tbody>
 			<tr>
 				<td>
 					<table align="center" border="0" cellpadding="0" cellspacing="0"
@@ -242,176 +257,86 @@ p {
 							</tr>
 						</tbody>
 					</table>
-					<table align="center" border="0" cellpadding="0" cellspacing="0"
-						class="row row-2" role="presentation"
-						style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-						<tbody>
-							<tr>
-								<td>
-									<table align="center" border="0" cellpadding="0"
-										cellspacing="0" class="row-content stack" role="presentation"
-										style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #efefef; color: #000000; width: 680px;"
-										width="680">
-										<tbody>
-											<tr>
-												<td class="column column-1"
-													style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
-													width="100%">
-													<table border="0" cellpadding="0" cellspacing="0"
-														class="paragraph_block block-2" role="presentation"
-														style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;"
-														width="100%">
-														<tr>
-															<td class="pad"
-																style="padding-bottom: 0px; padding-left: 10px; padding-right: 10px; padding-top: 31px;">
-																<div
-																	style="color: #39374e; direction: ltr; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0px; line-height: 150%; text-align: center; mso-line-height-alt: 18px;">
-																	<p style="margin: 0;">
-																		<span
-																			style="font-family: inherit; background-color: transparent;">This
-																			message was sent to you because you opted into
-																			hearing from Codex Trees posts, events and
-																			opportunities. If you do not wish to receive these
-																			emails, please unsubscribe <a
-																			href="https://notifications.google.com/g/p/APNL1Tj28gi0kP7J00E507gS-3VrBy_v1cLBZp4MdLfVTKFYMgNJv_iRlEAod3O5DW29nTY27pms7GEA8QQaMZcXGHjk4NTOyOs1SB9oRU1hsr4cCOQHDmgyRfCjKpWm8vF9jraDapxYx7h5ZhAOYTuOzUDv6A"
-																			rel="noopener" style="color: #fe7062;"
-																			target="_blank">here</a>
-																		</span>
-																	</p>
-																</div>
-															</td>
-														</tr>
-													</table>
-													<table border="0" cellpadding="0" cellspacing="0"
-														class="social_block block-3" role="presentation"
-														style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-														width="100%">
-														<tr>
-															<td class="pad"
-																style="padding-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 0px; text-align: center;">
-																<div class="alignment" style="text-align: center;">
-																	<table border="0" cellpadding="0" cellspacing="0"
-																		class="social-table" role="presentation"
-																		style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;"
-																		width="170.03045685279187px">
-																		<tr>
-																			<td style="padding: 0 7px 0 7px;"><a
-																				href="https://www.youtube.com/channel/UC8yIoifKqBK_cNkERfeLDLg"
-																				target="_blank"><img alt="YouTube" height="32"
-																					src="https://firebasestorage.googleapis.com/v0/b/codex-trees.appspot.com/o/icons%2Fyoutube2x.png?alt=media&token=39918279-d608-4bba-a612-f0f32bfbbe92"
-																					style="display: block; height: auto; border: 0;"
-																					title="YouTube" width="32" /></a></td>
-																			<td style="padding: 0 7px 0 7px;"><a
-																				href="mailto:codextrees@gmail.com" target="_blank"><img
-																					alt="E-Mail" height="32"
-																					src="https://firebasestorage.googleapis.com/v0/b/codex-trees.appspot.com/o/icons%2Fmail2x.png?alt=media&token=28275fdd-7857-4b4e-bcda-925e20fdbe63"
-																					style="display: block; height: auto; border: 0;"
-																					title="E-Mail" width="32" /></a></td>
-																			<td style="padding: 0 7px 0 7px;"><a
-																				href="https://t.me/codextree" target="_blank"><img
-																					alt="Telegram" height="32"
-																					src="https://firebasestorage.googleapis.com/v0/b/codex-trees.appspot.com/o/icons%2Ftelegram2x.png?alt=media&token=26b78edb-d120-4600-adcd-a95db1864f56"
-																					style="display: block; height: auto; border: 0;"
-																					title="Telegram" width="32" /></a></td>
-																			<td style="padding: 0 7px 0 7px;"><a
-																				href="https://codextrees.herokuapp.com/"
-																				target="_blank"><img alt="Codex Trees"
-																					height="32"
-																					src="https://firebasestorage.googleapis.com/v0/b/codex-trees.appspot.com/o/icons%2Ficon.png?alt=media&token=88abaf33-d3df-47e3-91df-58c35f328ef5"
-																					style="display: block; height: auto; border: 0;"
-																					title="Codex Trees" width="18.03045685279188" /></a></td>
-																		</tr>
-																	</table>
-																</div>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table align="center" border="0" cellpadding="0" cellspacing="0"
-						class="row row-3" role="presentation"
-						style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;"
-						width="100%">
-						<tbody>
-							<tr>
-								<td>
-									<table align="center" border="0" cellpadding="0"
-										cellspacing="0" class="row-content stack" role="presentation"
-										style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;"
-										width="680">
-										<tbody>
-											<tr>
-												<td class="column column-1"
-													style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
-													width="100%">
-													<div class="spacer_block"
-														style="height: 32px; line-height: 32px; font-size: 1px;">
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table align="center" border="0" cellpadding="0" cellspacing="0"
-						class="row row-4" role="presentation"
-						style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-						<tbody>
-							<tr>
-								<td>
-									<table align="center" border="0" cellpadding="0"
-										cellspacing="0" class="row-content stack" role="presentation"
-										style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;"
-										width="680">
-										<tbody>
-											<tr>
-												<td class="column column-1"
-													style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;"
-													width="100%">
-													<table border="0" cellpadding="0" cellspacing="0"
-														class="icons_block block-1" role="presentation"
-														style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-														width="100%">
-														<tr>
-															<td class="pad"
-																style="vertical-align: middle; color: #9d9d9d; font-family: inherit; font-size: 15px; padding-bottom: 5px; padding-top: 5px; text-align: center;">
-																<table cellpadding="0" cellspacing="0"
-																	role="presentation"
-																	style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-																	width="100%">
-																	<tr>
-																		<td class="alignment"
-																			style="vertical-align: middle; text-align: center;">
-																			<!--[if vml]><table align="left" cellpadding="0" cellspacing="0" role="presentation" style="display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;"><![endif]-->
-																			<!--[if !vml]><!-->
-
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					
+					
 				</td>
 			</tr>
 		</tbody>
 	</table>
 	<!-- End -->
-</body>
 
+		<div class="authenticated">
+			<div class="container">
+				<div class="container authenticated">
+					<form id="commentform" class="needs-validation"
+						th:action="@{/comment/createcomment}"
+						th:object="${commentdetails}" method="post" novalidate>
+
+						<div class="form-group">
+							<label for="messege">Comments </label> <input type="hidden"
+								name="postId" th:value="${postdetails.id}"> <input
+								type="text" class="form-control" id="messege"
+								th:field="*{msgBody}" placeholder="Add a comment." required>
+							<div class="invalid-feedback">Enter a valid Comment</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Comment</button>
+					</form>
+				</div>
+				<div id="snackbar"></div>
+			</div>
+
+		</div>
+		<div>
+			<div id="comments">
+				<div th:each='commentdetails : ${postdetails.getComments()}'>
+					<div th:object='${commentdetails}' class='col-sm-6'>
+						<div class='card' style='width: 18rem;'>
+							<div class='card-body'>
+							
+								<h5 th:text="*{username}" class="card-title"></h5>
+								<p th:text='*{msgBody}' class='card-text'></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script>
+		
+		function showSnackbar(text) {
+			var snackBar = document.getElementById("snackbar");
+			snackbar.innerHTML = text;
+			snackBar.className = "show-bar";
+			setTimeout(
+					function() {
+						snackBar.className = snackBar.className.replace(
+								"show-bar", "");
+
+					}, 5000);
+		}
+
+		var frm = $('#commentform');
+
+		frm.submit(function(e) {
+
+			e.preventDefault();
+			console.log(frm.serialize());
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					showSnackbar(data);
+				},
+				error : function(data) {
+					showsnackbar(data)
+				},
+			});
+		});
+	</script>
+</body>
 </html>
