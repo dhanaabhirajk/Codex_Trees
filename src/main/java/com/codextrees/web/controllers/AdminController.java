@@ -11,4 +11,12 @@ public class AdminController {
 		return "admin/adminpage";
 	}
  	
+	@RequestMapping("/google3752f5be1fbf25c2.html")
+	public String verifySearchConsole() {
+		
+		return "google3752f5be1fbf25c2";
+	}
+ 	
+	
+	
 }
