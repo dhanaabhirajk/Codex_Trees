@@ -123,6 +123,10 @@
           <artifactId>jsoup</artifactId>
           <version>1.11.3</version>
       </dependency>
+      <dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
 	</dependencies>
 
 	<build>
