@@ -23,10 +23,10 @@ public class HomeController {
 	
 		return "../static/html/contact-us.html";
 	}
-	
-	@RequestMapping("/sitemap.xml")
-	public String getSitemap() {
-	
-		return "../static/sitemap.xml";
-	}
+//	
+//	@RequestMapping("/sitemap.xml")
+//	public String getSitemap() {
+//	
+//		return "../static/sitemap.xml";
+//	}
 }
