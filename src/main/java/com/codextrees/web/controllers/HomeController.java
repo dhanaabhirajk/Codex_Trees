@@ -24,9 +24,9 @@ public class HomeController {
 		return "../static/html/contact-us.html";
 	}
 	
-	@RequestMapping(value = "/sitemap.xml",produces=MediaType.APPLICATION_XML_VALUE)
-	public String getSitemap() {
-	
-		return "../static/html/sitemap.xml";
-	}
+//	@RequestMapping(value = "/sitemap.xml",produces=MediaType.APPLICATION_XML_VALUE)
+//	public String getSitemap() {
+//	
+//		return "../static/html/sitemap.xml";
+//	}
 }
