@@ -38,13 +38,13 @@ public class SecurityConfig {
 
 		http
 		.authorizeRequests(a -> a
-				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/c-lang/**","/google3752f5be1fbf25c2.html","/privacy-policy","/contact").permitAll()
+				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/c-lang/**","/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.exceptionHandling(e -> e
 				.authenticationEntryPoint(unauthenticatedRequestHandler())
-				.accessDeniedPage("/accessdenied.html")
+				.accessDeniedPage("/html/accessdenied.html")
 			)
 			
 			.oauth2Login()

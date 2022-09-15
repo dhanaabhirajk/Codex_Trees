@@ -1,7 +1,7 @@
 package com.codextrees.web.controllers;
 
-import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,10 +23,10 @@ public class HomeController {
 	
 		return "../static/html/contact-us.html";
 	}
-//	
-//	@RequestMapping("/sitemap.xml")
-//	public String getSitemap() {
-//	
-//		return "../static/sitemap.xml";
-//	}
+	
+	@RequestMapping(value = "/sitemap.xml",produces=MediaType.APPLICATION_XML_VALUE)
+	public String getSitemap() {
+	
+		return "../static/html/sitemap.xml";
+	}
 }
