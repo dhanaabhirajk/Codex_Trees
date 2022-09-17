@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.codextrees.web.models.Comment;
 import com.codextrees.web.models.Post;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
