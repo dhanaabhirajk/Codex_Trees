@@ -2,6 +2,7 @@ package com.codextrees.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codextrees.web.models.Article;
@@ -24,4 +25,10 @@ public class AdminController {
 		model.addAttribute("topicdetails", new Article());
 		return "admin/createtopic";
 	}
+	
+	@RequestMapping("/admin/articles")
+	public String getArticles() {
+		return "admin/articles";
+	}
+	
 }

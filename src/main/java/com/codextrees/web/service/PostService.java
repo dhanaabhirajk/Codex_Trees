@@ -13,7 +13,6 @@ import com.codextrees.web.dto.CommentDTO;
 import com.codextrees.web.dto.PostDTO;
 import com.codextrees.web.models.Comment;
 import com.codextrees.web.models.Post;
-import com.codextrees.web.models.User;
 import com.codextrees.web.repository.PostRepository;
 
 @Component

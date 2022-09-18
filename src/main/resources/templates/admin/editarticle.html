@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Create Topic</title>
+<title>Create Article</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width" />
 <base href="/" />
@@ -19,13 +19,18 @@
 </head>
 <body>
 
-	<h1>Create Topic</h1>
+	<h1>Edit Article</h1>
 	
 	<div class="container">
 		<div class="container authenticated">
-		 <form id = "articleform" th:action = "@{/admin/createtopic}" th:object="${topicdetails}"  method = "post">
+		 <form id = "articleform" th:action = "@{/admin/createarticle}" th:object="${articledetails}"  method = "post">
   
-  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="tile">Title</label>
+      <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Title">
+    </div>
+  </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="url">url</label>
@@ -35,17 +40,21 @@
   
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="title">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="des">Description</label>
-      <input type="text" class="form-control" id="des" th:field="*{des}" placeholder="Description">
+      <label for="desc">Description</label>
+      <input type="text" class="form-control" id="desc" th:field="*{desc}" placeholder="Description">
     </div>
   </div>
   
+  <div class="form-group">
+    <label for="html_body">Html</label>
+    <input type="text" class="form-control" id="html_body" th:field="*{htmlBody}" placeholder="Paste Html code">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="topic">Topic</label>
+      <input type="text" class="form-control" id="topic" th:field="*{topic}" placeholder="topic">
+    </div>
+  </div>
   <button type="submit" class="btn btn-primary">Post</button>
 </form>
 		</div>

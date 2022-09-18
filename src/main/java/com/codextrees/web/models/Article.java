@@ -19,6 +19,9 @@ public class Article{
 	private Long id;
 	private String title;
 	private String url;
+	private String des;
+	
+
 	@Column(columnDefinition="TEXT")
 	private String htmlBody;
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
@@ -53,7 +56,15 @@ public class Article{
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public String getDes() {
+		return des;
+	}
 
+	public void setDes(String des) {
+		this.des = des;
+	}
+	
 	public String getHtmlBody() {
 		return htmlBody;
 	}

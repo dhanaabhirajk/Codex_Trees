@@ -2,10 +2,17 @@ package com.codextrees.web.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.*;
 
-import org.joda.time.DateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 @Entity
 public class Post {
@@ -23,7 +30,7 @@ public class Post {
 	public String getLink_title() {
 		return link_title;
 	}
-
+		
 	public void setLink_title(String link_title) {
 		this.link_title = link_title;
 	}

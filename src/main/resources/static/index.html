@@ -16,7 +16,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 	<link  rel="stylesheet" type="text/css" href="/css/style.css">
-		
+	
 	<style>
 		.google {
 			background-color: #dd4b39;
@@ -26,24 +26,44 @@
 </head>
 
 <body>
-	<nav class="navbar fixed-top bg-light">
-		<div class="container-fluid d-flex justify-content-between">
-			<div>
-				<a class="text-decoration-none h3 text-dark" href="/">Codex Trees</a>
-			</div>
-			<div>
-			<a href="/post/latestpost" class="btn btn-dark fw-bold text-light">Check the latest post</a>
-			<a href="/c-lang/intro" class="btn btn-dark fw-bold text-light">Learn C Language</a>
-			</div>
-			<div id="authentication-btn">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <a class="navbar-brand" href="#">
+    <img src="./images/logo.jpg" width="120" height="35" alt="">
+  </a>
+ 
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/topics">Topics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/articles">Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    </form>
+  </div>
+  <div id="authentication-btn">
 				<a href="/oauth2/authorization/google" class="btn btn-dark fw-bold">
 					<i class="bi bi-google px-2"></i> LOGIN
 				</a>
 			</div>
-			
-		</div>
-	</nav>
+</nav>
+	
 	<div class="container pt-5 mt-5">
+	
 		<div class="unauthenticated">
 			<div class="row">
 				<div class="col-11 col-md-8 col-lg-6 m-auto">
@@ -100,6 +120,97 @@
      
 		<div class="container text-danger error"></div>
 	</div>
+	<footer class="text-center text-white"
+				style="background-color: #3f51b5">
+				<!-- Grid container -->
+				<div class="container">
+					<!-- Section: Links -->
+					<section class="mt-5">
+						<!-- Grid row-->
+						<div class="row text-center d-flex justify-content-center pt-5">
+							<!-- Grid column -->
+							<div class="col-md-2">
+								<h6 class="text-uppercase font-weight-bold">
+									<a href="/" class="text-white">About us</a>
+								</h6>
+							</div>
+							<!-- Grid column -->
+
+							<!-- Grid column -->
+							<div class="col-md-2">
+								<h6 class="text-uppercase font-weight-bold">
+									<a href="/" class="text-white">Products</a>
+								</h6>
+							</div>
+							<!-- Grid column -->
+
+							<!-- Grid column -->
+							<div class="col-md-2">
+								<h6 class="text-uppercase font-weight-bold">
+									<a href="/" class="text-white">Developers</a>
+								</h6>
+							</div>
+							<!-- Grid column -->
+
+							<!-- Grid column -->
+							<div class="col-md-2">
+								<h6 class="text-uppercase font-weight-bold">
+									<a href="/privacy-policy" class="text-white">Privacy Policy</a>
+								</h6>
+							</div>
+							<!-- Grid column -->
+
+							<!-- Grid column -->
+							<div class="col-md-2">
+								<h6 class="text-uppercase font-weight-bold">
+									<a href="/contact" class="text-white">Contact</a>
+								</h6>
+							</div>
+							<!-- Grid column -->
+						</div>
+						<!-- Grid row-->
+					</section>
+					<!-- Section: Links -->
+
+					<hr class="my-5" />
+
+					<!-- Section: Text -->
+					<section class="mb-5">
+						<div class="row d-flex justify-content-center">
+							<div class="col-lg-8">
+								<p>Codex Trees is a community of students to learn from
+									here. Happy to be here with you all.</p>
+							</div>
+						</div>
+					</section>
+					<!-- Section: Text -->
+
+					<!-- Section: Social -->
+					<section class="text-center mb-5">
+
+						<a href="mailto:codextrees@gmail.com" target="_blank" class="text-white me-4"> <i class="bi bi-envelope"></i>
+						</a> <a href="" class="text-white me-4"> <i
+							class="bi bi-instagram"></i>
+						</a> <a href="https://www.youtube.com/channel/UC8yIoifKqBK_cNkERfeLDLg" target="_blank"class="text-white me-4"> <i class="bi bi-youtube"></i>
+						</a> <a href="https://t.me/codextree" target="_blank" class="text-white me-4"> <i
+							class="bi bi-telegram"></i>
+						</a> <a href="https://codextrees.herokuapp.com/" target="_blank"><img
+							alt="Codex Trees" height="32" src="/images/icon.png"
+							style="height: auto;" title="Codex Trees"
+							width="18.03045685279188" /></a>
+					</section>
+					<!-- Section: Social -->
+				</div>
+				<!-- Grid container -->
+
+				<!-- Copyright -->
+				<div class="text-center p-3"
+					style="background-color: rgba(0, 0, 0, 0.2)">
+					&#169; 2022 Copyright: <a class="text-white"
+						href="https://codextrees.herokuapp.com/">codextrees.com</a>
+				</div>
+				<!-- Copyright -->
+			</footer>
 	<script type="text/javascript">
 	
 	function showSnackbar(text) {

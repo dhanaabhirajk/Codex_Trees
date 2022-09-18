@@ -1,9 +1,14 @@
 package com.codextrees.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.codextrees.web.common.APIResponse;
+import com.codextrees.web.data.ArticleData;
 import com.codextrees.web.models.Article;
+import com.codextrees.web.models.Topic;
 import com.codextrees.web.repository.ArticleRepository;
 
 @Component
@@ -20,8 +25,38 @@ public class ArticleService {
 		}
 	}
 	
-	public Article getPostByUrl(String article_url) {
-		return articleRepo.getArticleByUrl(article_url);
+	
+	public APIResponse getArticles() {
+		APIResponse apiResponse = new APIResponse();
+		List<Article> articles = articleRepo.getArticles();
+		if(articles==null) {
+			apiResponse.setStatus(404);
+			apiResponse.setError("Not Found");
+		}
+		ArticleData articleData = new ArticleData();
+		articleData.setArticles(articles);
+		
+		apiResponse.setData(articleData.getArticles());
+		return apiResponse;
+	}
+	
+	public APIResponse getApiArticleByUrl(String article_url) {
+		APIResponse apiResponse = new APIResponse();
+		Article article = articleRepo.getArticleByUrl(article_url);;
+		if(article==null) {
+			apiResponse.setStatus(404);
+			apiResponse.setError("Not Found");
+		}
+			
+		apiResponse.setData(article);
+		return apiResponse;
+	}
+	
+	public List<Article> getApiArticlesByTopic(Topic topic) {
+		
+		List<Article> articles = articleRepo.getArticlesByTopic(topic);
+		
+		return articles;
 	}
 	
 }

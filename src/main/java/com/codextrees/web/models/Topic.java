@@ -17,42 +17,45 @@ public class Topic {
 	@Column(name = "topic_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String topic;
+	private String title;
 	private String url;
-	
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
+	private String des;
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getTopic() {
-		return topic;
+	public String getTitle() {
+		return title;
 	}
-
-	public void setTopic(String topic) {
-		this.topic = topic;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-
-	public List<Article> getArticles() {
-		return articles;
+	public String getUrl() {
+		return url;
 	}
-
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
+	public void setUrl(String url) {
+		this.url = url;
 	}
+	public String getDes() {
+		return des;
+	}
+	public void setDes(String des) {
+		this.des = des;
+	}
+	
+	
 
-	@OneToMany(mappedBy = "topic",fetch = FetchType.LAZY)
-	private List<Article> articles = new ArrayList<Article>();
+//	public List<Article> getArticles() {
+//		return articles;
+//	}
+//
+//	public void setArticles(List<Article> articles) {
+//		this.articles = articles;
+//	}
+//
+//	@OneToMany(mappedBy = "topic",fetch = FetchType.LAZY)
+//	private List<Article> articles = new ArrayList<Article>();
 	
 }

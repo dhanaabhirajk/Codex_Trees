@@ -1,8 +1,12 @@
-<footer>
-		<!-- Remove the container if you want to extend the Footer to full width. -->
-		<div class="container my-5">
-			<!-- Footer -->
-			<footer class="text-center text-white"
+<!DOCTYPE html>
+<html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Footer</title>
+</head>
+<body>
+<footer th:fragment = "footer" class="text-center text-white"
 				style="background-color: #3f51b5">
 				<!-- Grid container -->
 				<div class="container">
@@ -70,12 +74,12 @@
 					<!-- Section: Social -->
 					<section class="text-center mb-5">
 
-						<a href="https://t.me/codextree" class="text-white me-4"> <i class="bi bi-envelope"></i>
+						<a href="mailto:codextrees@gmail.com" target="_blank" class="text-white me-4"> <i class="bi bi-envelope"></i>
 						</a> <a href="" class="text-white me-4"> <i
-							class="fab fa-instagram"></i>
-						</a> <a href="https://www.youtube.com/channel/UC8yIoifKqBK_cNkERfeLDLg" class="text-white me-4"> <i class="fab fa-youtube"></i>
-						</a> <a href="" class="text-white me-4"> <i
-							class="fab fa-telegram"></i>
+							class="bi bi-instagram"></i>
+						</a> <a href="https://www.youtube.com/channel/UC8yIoifKqBK_cNkERfeLDLg" target="_blank"class="text-white me-4"> <i class="bi bi-youtube"></i>
+						</a> <a href="https://t.me/codextree" target="_blank" class="text-white me-4"> <i
+							class="bi bi-telegram"></i>
 						</a> <a href="https://codextrees.herokuapp.com/" target="_blank"><img
 							alt="Codex Trees" height="32" src="/images/icon.png"
 							style="height: auto;" title="Codex Trees"
@@ -88,12 +92,10 @@
 				<!-- Copyright -->
 				<div class="text-center p-3"
 					style="background-color: rgba(0, 0, 0, 0.2)">
-					© 2022 Copyright: <a class="text-white"
+					&#169; 2022 Copyright: <a class="text-white"
 						href="https://codextrees.herokuapp.com/">codextrees.com</a>
 				</div>
 				<!-- Copyright -->
 			</footer>
-			<!-- Footer -->
-		</div>
-		<!-- End of .container -->
-	</footer>
+</body>
+</html>
