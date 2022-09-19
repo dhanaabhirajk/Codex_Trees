@@ -36,13 +36,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 <script type="text/javascript">
-$.get("/user", function (data) {
-	$("#user").html(data.name);
-	$(".unauthenticated").hide();
-	$(".authenticated").show();
-	$("#authentication-btn").html('<div><button onClick="logout()" class="btn btn-dark fw-bold">Logout</button></div>');
-	
-});
+
 $.ajaxSetup({
 	beforeSend: function (xhr, settings) {
 		if (settings.type == 'POST' || settings.type == 'PUT'|| settings.type == 'DELETE')

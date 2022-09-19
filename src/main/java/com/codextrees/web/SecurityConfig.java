@@ -38,7 +38,9 @@ public class SecurityConfig {
 
 		http
 		.authorizeRequests(a -> a
-				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/c-lang/**","/api/**","/article/**","/t/**","/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
+				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user",
+						"/c-lang/**","/api/**","/article/**","/t/**","/articles","/topics",
+						"/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
