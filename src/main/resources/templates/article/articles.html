@@ -4,30 +4,27 @@
 <body>
 <nav th:replace = "fragments/navigation :: navigation"></nav>
 <div class="row d-flex justify-content-center">
-	<div class="col-md-7" id = "article">
-
-  	</div>
+	<div class="col-md-7">
+		<div class="row">
+			<div th:each="articledetails : ${articles}">
+				<div th:object="${articledetails}" class="col-sm-6">
+					<div class='card' style='width: 18rem;'>
+						<div class='card-body'>
+							<h5 th:text="*{title}" class='card-title'></h5>
+							<p th:text="*{des}" class='card-text'></p>
+							<a th:href="@{'/t/'+${articledetails.topic.url}+'/'+*{url}}" class='card-link'>View Article</a>
+						</div>
+					</div>					
+				</div>
+			</div>
+			</div>
+		</div>
   </div>
 	<div th:replace="fragments/footer :: footer"></div>
 	<script>
 	
 	
-	$.get("/api/c-lang/all", function (data) {
-		
-		if(data.data == null){
-			document.title = data.error;
-			$("#article").html("<br><br><br><h2>"+data.error+"</h2><br><br><br><br><br>");
-		}else{
-			document.title = "Articles";
-			var cards ="<br><br>";
-			for (var j = 0; j < data.data.length; j++){
-				var article = data.data[j];
-				var card = "<div class='card' style='width: 18rem;'><div class='card-body'><h5 class='card-title'>"+article.title+"</h5><p class='card-text'>"+article.des+"</p><a href='/"+article.topic.url+"/"+article.url+"'"+" class='card-link'>View Article</a></div></div>"
-				cards = cards+card;
-				}
-			$("#article").html(cards);
-		}
-	});
+	
 	</script>
 </body>
 </html>

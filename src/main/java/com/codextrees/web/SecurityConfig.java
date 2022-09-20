@@ -32,16 +32,17 @@ public class SecurityConfig {
 	UnauthenticatedRequestHandler unauthenticatedRequestHandler() {
 	    return new UnauthenticatedRequestHandler();
 	}
+
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http
 		.authorizeRequests(a -> a
-				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user",
-						"/c-lang/**","/api/**","/article/**","/t/**","/articles","/topics",
+				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user","/js/**",
+						"/article/**","/t/**","/articles","/topics",
 						"/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
-				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/admin/**","/api/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.exceptionHandling(e -> e

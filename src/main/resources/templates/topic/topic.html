@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace = "fragments/header :: header"></head>
+<head th:replace="fragments/header-with-ads :: header"></head>
 <body>
-<nav th:replace = "fragments/navigation :: navigation"></nav>
-<div class="row d-flex justify-content-center">
-	<div class="col-md-7" id = "article">
+	<nav th:replace="fragments/navigation :: navigation"></nav>
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-7">
+			<div th:object="${topicArticle.topic}">
+				<br>
+				<br>
+				<h1 th:text="*{title}"></h1>
+				<br>
+				<h3 th:text="*{des}"></h3>
+				<br>
+			</div>
 
-  	</div>
-  </div>
+
+			<div class="row">
+				<div th:each="articledetails : ${topicArticle.articles}">
+					<div th:object="${articledetails}" class="col-sm-6">
+						<div class='card' style='width: 18rem;'>
+							<div class='card-body'>
+								<h5 th:text="*{title}" class='card-title'></h5>
+								<p th:text="*{des}" class='card-text'></p>
+								<a th:href="@{'/t/'+${topicArticle.topic.url}+'/'+*{url}}" class='card-link'>View Topic</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div th:replace="fragments/footer :: footer"></div>
 	<script>
-	
-	
-	$.get("/api"+window.location.pathname, function (data) {
 		
-		if(data.data == null){
-			document.title = data.error;
-			$("#article").html("<br><br><br><h2>"+data.error+"</h2><br><br><br><br><br>");
-		}else{
-			document.title = data.data.topic.title;
-			var cards ="<br><br>"+"<h1>"+data.data.topic.title+"</h1>"+"<br><h3>"+data.data.topic.des+"</h3><br>";
-			for (var j = 0; j < data.data.articles.length; j++){
-				var article = data.data.articles[j];
-				var card = "<div class='card' style='width: 18rem;'><div class='card-body'><h5 class='card-title'>"+article.title+"</h5><p class='card-text'>"+article.des+"</p><a href='/"+data.data.topic.url+"/"+article.url+"'"+" class='card-link'>View Article</a></div></div>"
-				cards = cards+card;
-				}
-			$("#article").html(cards);
-		}
-	});
 	</script>
 </body>
 </html>

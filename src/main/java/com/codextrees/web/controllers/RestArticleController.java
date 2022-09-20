@@ -14,7 +14,7 @@ import com.codextrees.web.models.Article;
 import com.codextrees.web.service.ArticleService;
 
 @RestController
-public class ArticleController {
+public class RestArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
@@ -35,10 +35,10 @@ public class ArticleController {
 		return apiResponse;
 	}
 	//api for individual article
-	@RequestMapping("/api/c-lang/{url}")
-	public APIResponse getArticleByUrl(@PathVariable("url") String url) {
-		APIResponse apiResponse = articleService.getApiArticleByUrl(url);
-		return apiResponse;
-	}
+//	@RequestMapping("/api/{topic}/{url}")
+//	public APIResponse getArticleByUrl(@PathVariable("url") String url) {
+//		APIResponse apiResponse = articleService.getApiArticleByUrl(url);
+//		return apiResponse;
+//	}
 		
 }

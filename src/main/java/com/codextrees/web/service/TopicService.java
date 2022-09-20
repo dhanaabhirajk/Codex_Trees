@@ -39,10 +39,8 @@ public class TopicService {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
 		}
-		TopicData topicData = new TopicData();
-		topicData.setTopics(topics);
 		
-		apiResponse.setData(topicData.getTopics());
+		apiResponse.setData(topics);
 		return apiResponse;
 	}
 	

@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace = "fragments/header :: header"></head>
+<head th:replace="fragments/header :: header"></head>
 <body>
-<nav th:replace = "fragments/navigation :: navigation"></nav>
-<div class="row d-flex justify-content-center">
-	<div class="col-md-7" id = "topic">
-
-  	</div>
-  </div>
+	<nav th:replace="fragments/navigation :: navigation"></nav>
+	<div class="row d-flex justify-content-center">
+	<div class="col-md-7">
+		<div class="row">
+			<div th:each="topicdetails : ${topics}">
+				<div th:object="${topicdetails}" class="col-sm-6">
+					<div class='card' style='width: 18rem;'>
+						<div class='card-body'>
+							<h5 th:text="*{title}" class='card-title'></h5>
+							<p th:text="*{des}" class='card-text'></p>
+							<a th:href="@{'/t/'+*{url}}" class='card-link'>View Topic</a>
+						</div>
+					</div>					
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
 	<div th:replace="fragments/footer :: footer"></div>
 	<script>
 	
 	
-	$.get("/api/topic/all", function (data) {
-		
-		if(data.data == null){
-			document.title = data.error;
-			$("#topic").html("<br><br><br><h2>"+data.error+"</h2><br><br><br><br><br>");
-		}else{
-			document.title = "Topics";
-			var cards ="<br><br>";
-			for (var j = 0; j < data.data.length; j++){
-				var topic = data.data[j];
-				var card = "<div class='card' style='width: 18rem;'><div class='card-body'><h5 class='card-title'>"+topic.title+"</h5><p class='card-text'>"+topic.des+"</p><a href='/t/"+topic.url+"'"+" class='card-link'>View Topic</a></div></div>"
-				cards = cards+card;
-				}
-			$("#topic").html(cards);
-		}
-	});
 	</script>
 </body>
 </html>

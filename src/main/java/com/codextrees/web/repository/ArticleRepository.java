@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface ArticleRepository extends CrudRepository<Article,Long> {
 	
-	@Query("Select a FROM Article a WHERE a.url = :article_url")
-	   public Article getArticleByUrl(@Param("article_url") String article_url);
+	@Query("Select a FROM Article a WHERE a.topic.url =:topic_url AND a.url = :article_url")
+	 public Article getArticleByUrl(@Param("topic_url") String topic_url, @Param("article_url") String article_url);
 	
 	@Query("Select a FROM Article a")
 	public List<Article> getArticles();

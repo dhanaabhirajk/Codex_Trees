@@ -1,36 +1,16 @@
 package com.codextrees.web.controllers;
 
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.codextrees.web.models.Post;
+
 @Controller
 public class HomeController {
-	
-	//individual article template
-	@RequestMapping("/c-lang/{topic}")
-	public String getArticle() {
-		return "article/article";
-	}
-	//all articles template
-		@RequestMapping("/articles")
-		public String getAllArticles() {
-			return "article/articles";
-		}
-		
-	//individual topic template
-	@RequestMapping("/t/{topic}")
-	public String getTopic() {
-		return "topic/topic";
-	}
-		
-	//all topics templates
-	@RequestMapping("/topics")
-	public String getAllTopics() {
-		return "topic/topics";
-	}
 	
 	
 	@RequestMapping("/google3752f5be1fbf25c2.html")
@@ -50,9 +30,9 @@ public class HomeController {
 		return "html/contact-us.html";
 	}
 	
-//	@RequestMapping(value = "/sitemap.xml",produces=MediaType.APPLICATION_XML_VALUE)
-//	public String getSitemap() {
-//	
-//		return "../static/html/sitemap.xml";
-//	}
+	@RequestMapping(value = "/sitemap.xml",produces=MediaType.TEXT_XML_VALUE)
+	public String getSitemap() {
+	
+		return "sitemap.xml";
+	}
 }

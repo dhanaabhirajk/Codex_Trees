@@ -1,3 +1,4 @@
+
 package com.codextrees.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ import com.codextrees.web.models.Topic;
 import com.codextrees.web.service.TopicService;
 
 @RestController
-public class TopicController {
+public class RestTopicController {
 	@Autowired
 	TopicService topicService;
-	
+
 	
 	@PostMapping("/admin/createtopic")
 	@ResponseBody

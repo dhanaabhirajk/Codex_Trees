@@ -40,9 +40,9 @@ public class ArticleService {
 		return apiResponse;
 	}
 	
-	public APIResponse getApiArticleByUrl(String article_url) {
+	public APIResponse getApiArticleByUrl(String topic_url,String article_url) {
 		APIResponse apiResponse = new APIResponse();
-		Article article = articleRepo.getArticleByUrl(article_url);;
+		Article article = articleRepo.getArticleByUrl(topic_url,article_url);;
 		if(article==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
