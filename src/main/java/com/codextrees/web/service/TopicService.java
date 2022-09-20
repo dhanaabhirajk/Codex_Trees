@@ -38,6 +38,7 @@ public class TopicService {
 		if(topics==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
+			
 		}
 		
 		apiResponse.setData(topics);
@@ -50,6 +51,7 @@ public class TopicService {
 		if(topic==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
+			apiResponse.setTitle("Page Not Found");
 		}
 		else {
 			TopicArticleData topicArticleData = new TopicArticleData();
@@ -72,6 +74,7 @@ public class TopicService {
 				}
 				topicArticleData.setArticles(articleDTOList);
 			}
+			apiResponse.setTitle(topic.getTitle());
 			apiResponse.setData(topicArticleData);
 		}
 		

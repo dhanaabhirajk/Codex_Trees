@@ -32,10 +32,11 @@ public class ArticleService {
 		if(articles==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
+			apiResponse.setTitle("Empty");
 		}
 		ArticleData articleData = new ArticleData();
 		articleData.setArticles(articles);
-		
+		apiResponse.setTitle("Articles");
 		apiResponse.setData(articleData.getArticles());
 		return apiResponse;
 	}
@@ -46,8 +47,9 @@ public class ArticleService {
 		if(article==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
+			apiResponse.setTitle("Page Not Found");
 		}
-			
+		apiResponse.setTitle(article.getTitle());
 		apiResponse.setData(article);
 		return apiResponse;
 	}

@@ -8,13 +8,21 @@ public class APIResponse {
     private Integer status;
     private Object data;
     private Object error;
+    private String title;
 
-    public APIResponse() {
+	public APIResponse() {
         this.status = HttpStatus.OK.value();
         this.data = data;
         this.error = error;
     }
+	
+	public String getTitle() {
+		return title;
+	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
     public Integer getStatus() {
         return status;
     }

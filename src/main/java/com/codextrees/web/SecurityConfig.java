@@ -40,7 +40,7 @@ public class SecurityConfig {
 		http
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user","/js/**",
-						"/article/**","/t/**","/articles","/topics",
+						"/article/**","/t/**","/articles","/topics","/favicon.ico",
 						"/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
 				.antMatchers("/admin/**","/api/**").hasRole("ADMIN")
 				.anyRequest().authenticated()

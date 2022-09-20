@@ -22,6 +22,7 @@ public class ArticleController {
 			APIResponse apiResponse = articleService.getApiArticleByUrl(topic_url,article_url);
 			response.setStatus(apiResponse.getStatus());
 			model.addAttribute("articledetails",apiResponse.getData());
+			model.addAttribute("pageTitle",apiResponse.getTitle());	
 			return "article/article";
 		}
 		
@@ -31,6 +32,7 @@ public class ArticleController {
 				APIResponse apiResponse = articleService.getArticles();	
 				response.setStatus(apiResponse.getStatus());
 				model.addAttribute("articles",apiResponse.getData());
+				model.addAttribute("pageTitle","Articles");	
 				return "article/articles";
 		}
 			

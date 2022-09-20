@@ -22,6 +22,7 @@ public class TopicController {
 		APIResponse apiResponse = topicService.getTopics();
 		response.setStatus(apiResponse.getStatus());
 		model.addAttribute("topics",apiResponse.getData());
+		model.addAttribute("pageTitle","Topics");	
 		return "topic/topics";
 	}
 	
@@ -31,6 +32,7 @@ public class TopicController {
 		APIResponse apiResponse = topicService.getTopicByUrl(topic_url);
 		response.setStatus(apiResponse.getStatus());
 		model.addAttribute("topicArticle",apiResponse.getData());
+		model.addAttribute("pageTitle",apiResponse.getTitle());	
 		return "topic/topic";
 	}
 	
