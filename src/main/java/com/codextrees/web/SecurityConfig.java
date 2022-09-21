@@ -22,10 +22,12 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import com.codextrees.web.common.UnauthenticatedRequestHandler;
 import com.codextrees.web.service.UserService;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
+	
 	@Autowired
 	private UserService userService;
 	@Bean
