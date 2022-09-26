@@ -1,14 +1,15 @@
 function showSnackbar(text) {
-	    var snackBar = document.getElementById("snackbar");
-	    snackbar.text = text;
-	    snackBar.className = "show-bar";
-	    setTimeout(function () {
-	       snackBar.className = 
-	          snackBar.className.replace("show-bar", ""); 
-	       snackbar.text = "";
-	    }, 5000);
-	}
+	var snackBar = document.getElementById("snackbar");
 	
+	snackbar.innerHTML = text;
+	snackBar.className = "show-bar";
+	setTimeout(
+			function() {
+				snackBar.className = snackBar.className.replace(
+						"show-bar", "");
+
+			}, 5000);
+}
 
 var logout = function () {
 			$.post("/logout", function () {

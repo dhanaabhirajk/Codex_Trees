@@ -2,6 +2,7 @@ package com.codextrees.web.service;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ public class ArticleService {
 	private ArticleRepository articleRepo;
 	public String createArticle(Article article) {
 		try {
+			article.setPublish(false);
 			articleRepo.save(article);
 			return "Article Added";
 		}
@@ -24,11 +26,8 @@ public class ArticleService {
 			return "Some Error Occured";
 		}
 	}
-	
-	
-	public APIResponse getArticles() {
+	public APIResponse getArticleLogic(List<Article> articles) {
 		APIResponse apiResponse = new APIResponse();
-		List<Article> articles = articleRepo.getArticles();
 		if(articles==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
@@ -39,19 +38,50 @@ public class ArticleService {
 		apiResponse.setTitle("Articles");
 		apiResponse.setData(articleData.getArticles());
 		return apiResponse;
+		
+	}
+	public APIResponse getArticles() {
+		List<Article> articles = articleRepo.getArticles();
+		return getArticleLogic(articles);
 	}
 	
-	public APIResponse getApiArticleByUrl(String topic_url,String article_url) {
+	public APIResponse getArticles(boolean publish) {
+		List<Article> articles = articleRepo.getArticles(publish);
+
+		return getArticleLogic(articles);
+	}
+	
+	
+	
+	public APIResponse getArticle(Article article) {
 		APIResponse apiResponse = new APIResponse();
-		Article article = articleRepo.getArticleByUrl(topic_url,article_url);;
 		if(article==null) {
 			apiResponse.setStatus(404);
 			apiResponse.setError("Not Found");
 			apiResponse.setTitle("Page Not Found");
+		}else {
+			apiResponse.setTitle(article.getTitle());
+			apiResponse.setData(article);
 		}
-		apiResponse.setTitle(article.getTitle());
-		apiResponse.setData(article);
 		return apiResponse;
+	}
+	
+	public APIResponse getApiArticleByUrl(String topic_url,String article_url,boolean publish) {
+		Article article = articleRepo.getArticleByUrl(topic_url,article_url,publish);;
+		return getArticle(article);
+	}
+	
+	public APIResponse getApiArticleByUrl(String topic_url,String article_url) {
+		Article article = articleRepo.getArticleByUrl(topic_url,article_url);;
+		return getArticle(article);
+	}
+	
+	
+	public List<Article> getApiArticlesByTopic(Topic topic,boolean publish) {
+		
+		List<Article> articles = articleRepo.getArticlesByTopic(topic,publish);
+		
+		return articles;
 	}
 	
 	public List<Article> getApiArticlesByTopic(Topic topic) {
@@ -59,6 +89,32 @@ public class ArticleService {
 		List<Article> articles = articleRepo.getArticlesByTopic(topic);
 		
 		return articles;
+	}
+	
+	public APIResponse changePublishArticle(boolean publish, long articleId) {
+		APIResponse apiResponse = new APIResponse();
+		try {
+			articleRepo.changePublishArticle(publish, articleId);
+			apiResponse.setData("success");
+		}catch(Exception e)
+		{
+			apiResponse.setData("error");
+			apiResponse.setError("Error while Publish or Unpublish");
+		}
+		return apiResponse;
+	}
+	
+	public APIResponse updateArticleHtml(String htmlBody, long articleId) {
+		APIResponse apiResponse = new APIResponse();
+		try {
+			articleRepo.updateArticleHtml(htmlBody,DateTime.now(), articleId);
+			apiResponse.setData("success");
+		}catch(Exception e)
+		{
+			apiResponse.setData("error");
+			apiResponse.setError("Error while Publish or Unpublish");
+		}
+		return apiResponse;
 	}
 	
 }

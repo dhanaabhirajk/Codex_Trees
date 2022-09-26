@@ -1,15 +1,10 @@
 package com.codextrees.web.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Topic {
@@ -20,8 +15,15 @@ public class Topic {
 	private String title;
 	private String url;
 	private String des;
+	private boolean publish;
 	public Long getId() {
 		return id;
+	}
+	public boolean isPublish() {
+		return publish;
+	}
+	public void setPublish(boolean publish) {
+		this.publish = publish;
 	}
 	public void setId(Long id) {
 		this.id = id;

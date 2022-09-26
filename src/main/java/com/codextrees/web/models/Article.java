@@ -20,7 +20,15 @@ public class Article{
 	private String title;
 	private String url;
 	private String des;
-	
+	public boolean isPublish() {
+		return publish;
+	}
+
+	public void setPublish(boolean publish) {
+		this.publish = publish;
+	}
+
+	private boolean publish;
 
 	@Column(columnDefinition="TEXT")
 	private String htmlBody;

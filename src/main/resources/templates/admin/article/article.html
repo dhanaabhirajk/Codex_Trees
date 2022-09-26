@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace = "fragments/header :: header"></head>
+<body>
+<nav th:replace = "fragments/nav-admin :: navigation"></nav>
+<div class="row d-flex justify-content-center">
+	
+	<div class="col-md-7">
+		<div>
+		<form id = "postform" action = "/admin/article/publish" method = "post">
+			<input type="hidden" name="articleId" th:value="${articledetails.id}">
+			 
+			<button type="submit" id = "submit-button" class="btn btn-primary">Publish</button>
+		</form>
+		<button id ="article-edit-button" onClick="editArticle()" class="btn btn-primary">Edit</button>
+		<input type="hidden" id="publish" name="publish" th:value="${articledetails.publish}">
+		</div>
+		<div th:utext = "${articledetails.htmlBody}">
+		</div>
+  	</div>
+  	
+  </div>
+  <div id="snackbar"></div>
+	<div th:replace="fragments/footer :: footer"></div>
+	<script>
+	var editArticle = function(){
+		window.location.href = window.location.href+"/edit";
+	}
+	$(function(){
+		if($("#publish").val() == "false"){
+			$("#submit-button").text("PUBLISH");
+			$("#publishform").attr("action","/admin/article/publish");
+		}else{
+			$("#submit-button").text("PUBLISHED");
+			$("#publishform").attr("action","/admin/article/unpublish");
+		}
+	});
+	
+
+	var frm = $('#postform');
+	frm.submit(function(e) {
+
+			e.preventDefault();
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					if(data.error!=null){
+						showSnackbar(data.error);
+					}else{
+						showSnackbar(data.data);
+						changePublishButton();
+					}
+				},
+				error : function(data) {
+					showsnackbar(data.error)
+				},
+			});
+		});
+
+	
+	function changePublishButton(){
+		if($("#publish").val() == "false"){
+			$("#publish").val("true"); 
+			$("#submit-button").text("PUBLISHED");
+			$("#publishform").attr("action","/admin/article/unpublish");
+		}else{
+			$("#publish").val("false"); 
+			$("#submit-button").text("PUBLISH");
+			$("#publishform").attr("action","/admin/article/publish");
+		}
+	}
+	</script>
+</body>
+</html>

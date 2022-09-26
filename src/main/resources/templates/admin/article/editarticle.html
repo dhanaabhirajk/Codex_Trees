@@ -1,25 +1,10 @@
-
-<html lang="en">
-<html xmlns:th="https://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Create Article</title>
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width" />
-<base href="/" />
-<link rel="stylesheet" type="text/css"
-	href="/webjars/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-<script type="text/javascript"
-	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-
-</head>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace = "fragments/header :: header"></head>
 <body>
+<nav th:replace = "fragments/nav-admin :: navigation"></nav>
 
-	<h1>Create Article</h1>
+	<h1>Edit Article</h1>
 	
 	<div class="container">
 		<div class="container authenticated">
@@ -40,8 +25,8 @@
   
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="des">Description</label>
-      <input type="text" class="form-control" id="des" th:field="*{des}" placeholder="Description">
+      <label for="desc">Description</label>
+      <input type="text" class="form-control" id="desc" th:field="*{desc}" placeholder="Description">
     </div>
   </div>
   

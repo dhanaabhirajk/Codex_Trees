@@ -14,5 +14,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
             registry.addResourceHandler("/c-lang/**").addResourceLocations("classpath:/static/c_lang/html/");
     }
-   
+
 }
+

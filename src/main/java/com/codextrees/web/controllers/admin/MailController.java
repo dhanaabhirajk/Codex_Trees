@@ -1,4 +1,4 @@
-package com.codextrees.web.controllers;
+package com.codextrees.web.controllers.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

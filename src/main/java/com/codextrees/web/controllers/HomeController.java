@@ -4,10 +4,7 @@ package com.codextrees.web.controllers;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.codextrees.web.models.Post;
 
 @Controller
 public class HomeController {

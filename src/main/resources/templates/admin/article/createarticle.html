@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<h1>Edit Article</h1>
+	<h1>Create Article</h1>
 	
 	<div class="container">
 		<div class="container authenticated">
@@ -40,14 +40,15 @@
   
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="desc">Description</label>
-      <input type="text" class="form-control" id="desc" th:field="*{desc}" placeholder="Description">
+      <label for="des">Description</label>
+      <input type="text" class="form-control" id="des" th:field="*{des}" placeholder="Description">
     </div>
   </div>
   
   <div class="form-group">
     <label for="html_body">Html</label>
-    <input type="text" class="form-control" id="html_body" th:field="*{htmlBody}" placeholder="Paste Html code">
+    <textarea  type="text" class="form-control" id="html_body" th:field="*{htmlBody}" rows="20" cols="100"  placeholder="Paste Html code">
+    </textarea>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">

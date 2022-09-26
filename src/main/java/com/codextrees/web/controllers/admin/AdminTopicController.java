@@ -1,4 +1,4 @@
-package com.codextrees.web.controllers.template;
+package com.codextrees.web.controllers.admin;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +12,8 @@ import com.codextrees.web.common.APIResponse;
 import com.codextrees.web.service.TopicService;
 
 @Controller
-public class TopicController {
+@RequestMapping("/admin/")
+public class AdminTopicController {
 	@Autowired
 	TopicService topicService;
 	
@@ -23,9 +24,9 @@ public class TopicController {
 		response.setStatus(apiResponse.getStatus());
 		model.addAttribute("topics",apiResponse.getData());
 		model.addAttribute("pageTitle","Topics");	
-		return "topic/topics";
+		return "admin/topic/topics";
 	}
-	
+		
 	
 	@RequestMapping("/t/{topic_url}")
 	public String getTopic(HttpServletResponse response,Model model, @PathVariable("topic_url") String topic_url) {
@@ -33,7 +34,8 @@ public class TopicController {
 		response.setStatus(apiResponse.getStatus());
 		model.addAttribute("topicArticle",apiResponse.getData());
 		model.addAttribute("pageTitle",apiResponse.getTitle());	
-		return "topic/topic";
+		return "admin/topic/topic";
 	}
+	
 	
 }

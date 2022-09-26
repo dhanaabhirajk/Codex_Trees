@@ -38,9 +38,10 @@
 						th:object="${commentdetails}" method="post" novalidate>
 
 						<div class="form-group">
-							<label for="messege">Comments </label> <input type="hidden"
-								name="postId" th:value="${postdetails.id}"> <input
-								type="text" class="form-control" id="messege"
+							<label for="messege">Comments </label> 
+							<input type="hidden"
+								name="postId" th:value="${postdetails.id}"> 
+							<input type="text" class="form-control" id="messege"
 								th:field="*{msgBody}" placeholder="Add a comment." required>
 							<div class="invalid-feedback">Enter a valid Comment</div>
 						</div>
@@ -89,7 +90,6 @@
 		frm.submit(function(e) {
 
 			e.preventDefault();
-			console.log(frm.serialize());
 			$.ajax({
 				type : frm.attr('method'),
 				url : frm.attr('action'),

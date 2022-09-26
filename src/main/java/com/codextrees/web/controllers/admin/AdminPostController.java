@@ -1,4 +1,5 @@
-package com.codextrees.web.controllers;
+package com.codextrees.web.controllers.admin;
+
 
 import java.util.List;
 
@@ -17,10 +18,9 @@ import com.codextrees.web.models.Post;
 import com.codextrees.web.service.PostService;
 
 @Controller
-public class PostController {
+public class AdminPostController {
 	@Autowired 
 	private PostService postService;
-	
 	
 	
 	@RequestMapping("/admin/createpost")
@@ -37,22 +37,4 @@ public class PostController {
 		String status = postService.createPost(post);
 		return status;
 	}
-	
-	@RequestMapping("/post/latestpost")
-	public String getLatestPost(Model model) {
-		PostDTO post = postService.getLatestPostDTO(true);
-		model.addAttribute("postdetails", post);
-		Comment comment = new Comment();
-		//comment.setPost(post);
-		model.addAttribute("commentdetails", comment);
-		return "post/newlatestpost";
-	}
-	
-	@RequestMapping("/post/getposts")
-	public String getPosts(Model model) {
-		List<Post> posts= postService.getPosts();
-		model.addAttribute("posts", posts);
-		return "post/allposts";
-	}
-	
 }

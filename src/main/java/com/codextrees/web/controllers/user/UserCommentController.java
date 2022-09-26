@@ -1,4 +1,4 @@
-package com.codextrees.web.controllers;
+package com.codextrees.web.controllers.user;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import com.codextrees.web.service.PostService;
 import com.codextrees.web.service.UserService;
 
 @Controller
-public class CommentController {
+public class UserCommentController {
 	@Autowired
 	private CommentService commentService;
 	@Autowired
