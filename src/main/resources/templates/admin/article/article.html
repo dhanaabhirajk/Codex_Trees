@@ -29,10 +29,10 @@
 	$(function(){
 		if($("#publish").val() == "false"){
 			$("#submit-button").text("PUBLISH");
-			$("#publishform").attr("action","/admin/article/publish");
+			$("#postform").attr("action","/admin/article/publish");
 		}else{
 			$("#submit-button").text("PUBLISHED");
-			$("#publishform").attr("action","/admin/article/unpublish");
+			$("#postform").attr("action","/admin/article/unpublish");
 		}
 	});
 	
@@ -64,11 +64,11 @@
 		if($("#publish").val() == "false"){
 			$("#publish").val("true"); 
 			$("#submit-button").text("PUBLISHED");
-			$("#publishform").attr("action","/admin/article/unpublish");
+			$("#postform").attr("action","/admin/article/unpublish");
 		}else{
 			$("#publish").val("false"); 
 			$("#submit-button").text("PUBLISH");
-			$("#publishform").attr("action","/admin/article/publish");
+			$("#postform").attr("action","/admin/article/publish");
 		}
 	}
 	</script>

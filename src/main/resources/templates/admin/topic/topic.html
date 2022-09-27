@@ -45,10 +45,10 @@
 	$(function(){
 		if($("#publish").val() == "false"){
 			$("#submit-button").text("PUBLISH");
-			$("#publishform").attr("action","/admin/t/publish");
+			$("#postform").attr("action","/admin/t/publish");
 		}else{
 			$("#submit-button").text("PUBLISHED");
-			$("#publishform").attr("action","/admin/t/unpublish");
+			$("#postform").attr("action","/admin/t/unpublish");
 		}
 	});
 	
@@ -80,11 +80,11 @@
 		if($("#publish").val() == "false"){
 			$("#publish").val("true"); 
 			$("#submit-button").text("PUBLISHED");
-			$("#publishform").attr("action","/admin/t/unpublish");
+			$("#postform").attr("action","/admin/t/unpublish");
 		}else{
 			$("#publish").val("false"); 
 			$("#submit-button").text("PUBLISH");
-			$("#publishform").attr("action","/admin/t/publish");
+			$("#postform").attr("action","/admin/t/publish");
 		}
 	}
 	</script>
