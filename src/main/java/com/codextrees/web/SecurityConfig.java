@@ -40,7 +40,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		
-		http
+		http.requiresChannel((channel) -> channel.anyRequest().requiresSecure())
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user","/js/**",
 						"/article/**","/t/**","/articles","/topics","/favicon.ico",
