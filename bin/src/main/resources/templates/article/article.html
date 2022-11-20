@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace = "fragments/header-with-ads :: header"></head>
+<body>
+<nav th:replace = "fragments/navigation :: navigation"></nav>
+<div class="row d-flex justify-content-center">
+	<div class="col-md-7">
+		<div th:utext = "${articledetails.htmlBody}">
+		</div>
+  	</div>
+  </div>
+	<div th:replace="fragments/footer :: footer"></div>
+	<script>
+	
+	
+	
+	</script>
+</body>
+</html>

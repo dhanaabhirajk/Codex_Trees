@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace = "fragments/header :: header"></head>
+<body>
+<nav th:replace = "fragments/nav-admin :: navigation"></nav>
+<div>
+<div class="authenticated" style="display: none">
+			<div class="text-center fs-3">
+				<div class="text-secondary">Welcome,</div>
+				<div  class="fw-bold text-capitalize" id="user"></div>
+				
+			</div>
+			<div class="modal fade" id="sendMailPostAllModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Codex Trees</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class=" fs-4">
+								Are you sure, do want to post to all subscribed users from Codex Trees ?
+							</div>
+						</div>
+						<div class="modal-footer p-1">
+							<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+							<button onClick="sendMailPostAll()" type="button" class="btn btn-danger"
+								data-dismiss="modal">Confirm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+<br>
+<h1>Admin Accessibles</h1>
+<a href="/admin/sendmail" class="btn btn-primary">Send Mail to One</a>
+<a href="/admin/sendmailpost" class="btn btn-primary">Send Mail Post to One</a>
+<a  class="btn btn-primary"  data-toggle="modal" data-target="#sendMailPostAllModal">Send Mail Post All</a>
+<a href="/admin/sendmailall" class="btn btn-primary">Send Mail All</a>
+
+<a href="/admin/createpost" class="btn btn-primary">Create Post</a>
+<a href="/admin/createarticle" class="btn btn-primary">Create Article</a>
+<a href="/admin/articles" class="btn btn-primary">View all Articles</a>
+<a href="/admin/createtopic" class="btn btn-primary">Create Topic</a>
+<a href="/admin/home" class="btn btn-primary">Home</a>
+<br>
+<h1>User accessible</h1>
+<a href="/post/getposts" class="btn btn-primary">Get all posts</a>
+<a href="/post/latestpost" class="btn btn-primary">Get latest post</a>
+
+</div>
+<div id="snackbar"></div>
+	<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript">
+$.get("/user", function(data) {
+    $("#user").html(data.name);
+    $(".unauthenticated").hide()
+    $(".authenticated").show()
+});
+
+function showSnackbar(text) {
+	var snackBar = document.getElementById("snackbar");
+	snackbar.innerHTML = text;
+	snackBar.className = "show-bar";
+	setTimeout(
+			function() {
+				snackBar.className = snackBar.className.replace(
+						"show-bar", "");
+
+			}, 5000);
+}
+
+var sendMailPostAll = function () {
+	$.post("/admin/sendmailpostall", function (data) {
+
+			if ("success" == data) {
+				showSnackbar("Post sent successfully");
+				$("#sendMailPostAllModal").modal('hide');
+
+			} else {
+				showSnackbar(data);
+			}
+		})
+	return true;
+}
+$.ajaxSetup({
+	beforeSend: function (xhr, settings) {
+		if (settings.type == 'POST' || settings.type == 'PUT'|| settings.type == 'DELETE')
+		{
+			if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+				// Only send the token to relative URLs i.e. locally.
+				xhr.setRequestHeader("X-XSRF-TOKEN", Cookies
+					.get('XSRF-TOKEN'));
+			}
+		}
+	}
+});
+
+</script>
+
+</body>
+</html>

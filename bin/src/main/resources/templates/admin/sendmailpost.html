@@ -1,0 +1,73 @@
+
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Send Mail Post</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+	<h1>Send Mail Post</h1>
+	
+	<div class="container">
+		<div class="container unauthenticated">
+		 <form id ="postform" th:action = "@{/admin/sendmailpost}" th:object="${details}"  method = "post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="recipient">Email</label>
+      <input type="email" class="form-control" id="recipient" th:field="*{recipient}" placeholder="Email">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
+		</div>
+		<div id="snackbar"></div>
+		<div class="container text-danger error"></div>
+	</div>
+
+<script>
+function showSnackbar(text) {
+	var snackBar = document.getElementById("snackbar");
+	snackbar.innerHTML = text;
+	snackBar.className = "show-bar";
+	setTimeout(
+			function() {
+				snackBar.className = snackBar.className.replace(
+						"show-bar", "");
+
+			}, 5000);
+}
+
+var frm = $('#postform');
+
+frm.submit(function(e) {
+
+	e.preventDefault();
+	console.log(frm.serialize());
+	$.ajax({
+		type : frm.attr('method'),
+		url : frm.attr('action'),
+		data : frm.serialize(),
+		success : function(data) {
+			showSnackbar("Post Sent");
+		},
+		error : function(data) {
+			showsnackbar(data)
+		},
+	});
+});
+</script>
+</body>
+</html>

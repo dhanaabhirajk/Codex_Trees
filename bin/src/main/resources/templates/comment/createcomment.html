@@ -1,0 +1,78 @@
+
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Create Comment</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+
+	<h1>Create Comment</h1>
+
+	<div class="container">
+		<div class="container authenticated">
+			<form id="commentform" class="needs-validation"
+				th:action="@{/comment/createcomment}" th:object="${commentdetails}"
+				method="post" novalidate>
+
+				<div class="form-group">
+					<label for="messege">Messege</label> 
+					<input type="text"
+						class="form-control" id="messege" th:field="*{msgBody}"
+						placeholder="Type messege" required>
+					<div class="invalid-feedback">Enter a valid comments.</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Comment</button>
+			</form>
+		</div>
+		<div id="snackbar"></div>
+		<div class="container text-danger error"></div>
+	</div>
+
+	<script>
+	
+	function showSnackbar(text) {
+	    var snackBar = document.getElementById("snackbar");
+	    snackbar.innerHTML = text;
+	    snackBar.className = "show-bar";
+	    setTimeout(function () {
+	       snackBar.className = 
+	          snackBar.className.replace("show-bar", ""); 
+	      
+	    }, 5000);
+	}
+	
+	
+		var frm = $('#commentform');
+
+		frm.submit(function(e) {
+
+			e.preventDefault();
+
+			$.ajax({
+				type : frm.attr('method'),
+				url : frm.attr('action'),
+				data : frm.serialize(),
+				success : function(data) {
+					showSnackbar(data);
+				},
+				error : function(data) {
+					showsnackbar(data)
+				},
+			});
+		});
+	</script>
+</body>
+</html>
