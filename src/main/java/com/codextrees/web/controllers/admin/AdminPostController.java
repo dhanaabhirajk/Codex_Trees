@@ -22,9 +22,8 @@ public class AdminPostController {
 	@Autowired 
 	private PostService postService;
 	
-	
 	@RequestMapping("/admin/createpost")
-	public String createPostForm(Model model) {
+	public String createPostForm(Model model) { 	
 		model.addAttribute("postdetails", new Post());
 		return "admin/createpost";
 	}

@@ -7,10 +7,26 @@ import org.joda.time.DateTime;
 
 
 public class PostDTO {
-	private Long id;
+	private String id;
 	private String title;
 	private String link;
 	private String link_title;
+	public PostDTO() {
+		
+	}
+	public PostDTO(String id, String title, String link, String link_title, String msgBody, DateTime createdAt,
+			String image_link, List<CommentDTO> comments) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.link = link;
+		this.link_title = link_title;
+		this.msgBody = msgBody;
+		this.createdAt = createdAt;
+		this.image_link = image_link;
+		this.comments = comments;
+	}
+
 	public String getLink_title() {
 		return link_title;
 	}
@@ -21,11 +37,11 @@ public class PostDTO {
 
 	private String msgBody;
 	private DateTime createdAt;
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

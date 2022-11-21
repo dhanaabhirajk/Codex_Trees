@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,42 +36,35 @@ public class PostService {
 			return "Some Error Occured";
 		}
 	}
-	
+	public Post getPostById(String post_id) {
+		return postRepo.getPostById(post_id); 
+	}
 	public Post getLatestPost() {
 		return postRepo.getLatestPost();
 	}
+	public PostDTO getLatestPostDTO(boolean commentData) {
+		return getPostDTO(postRepo.getLatestPost(),commentData);
+	}
 	
+	public PostDTO getPostDTOById(String post_id,boolean commentData) {
+		return getPostDTO(postRepo.getPostById(post_id),commentData);
+	}
+
 	public List<Post> getPosts() {
 		return postRepo.getPosts();
 	}
-	public Post getPostById(long post_id) {
-		return postRepo.getPostById(post_id);
-	}
 	
-	public PostDTO getLatestPostDTO(boolean commentData) {
-		Post post;
+	public PostDTO getPostDTO(Post post,boolean commentData) {
+		
 		List<Comment> commentList = null;
-		
-		
-		post = postRepo.getLatestPost();
 		if(commentData) {
 			commentList = post.getComments();
 		}
 		
-		PostDTO postDTO = new PostDTO();
-		postDTO.setId(post.getId());
-		postDTO.setImage_link(post.getImage_link());
-		postDTO.setTitle(post.getTitle());
-		postDTO.setMsgBody(post.getMsgBody());
-		postDTO.setLink(post.getLink());
 		
-		
-		postDTO.setLink_title(post.getLink_title());
-		postDTO.setImage_link(post.getImage_link());
-		postDTO.setCreatedAt(post.getCreatedAt());
-		
-		List<CommentDTO> commentDTOList = new ArrayList<CommentDTO>();
+		List<CommentDTO> commentDTOList = null;
 		if(commentList!=null) {
+			commentDTOList = new ArrayList<CommentDTO>();
 			for(Comment comment : commentList) {
 				CommentDTO commentDTO = new CommentDTO();
 				commentDTO.setId(comment.getId());
@@ -79,9 +73,9 @@ public class PostService {
 				commentDTO.setCreatedAt(comment.getCreatedAt());
 				commentDTOList.add(commentDTO);
 			}
-			postDTO.setComments(commentDTOList);
 		}
 		
+		PostDTO postDTO = new PostDTO(post.getId(),post.getTitle(),post.getLink(),post.getLink_title(),post.getMsgBody(),post.getCreatedAt(),post.getImage_link(),commentDTOList);
 		return postDTO;
 	}
 }

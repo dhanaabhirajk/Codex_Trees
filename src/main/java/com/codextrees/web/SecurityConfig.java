@@ -40,10 +40,11 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		
-		http.requiresChannel((channel) -> channel.anyRequest().requiresSecure())
+		http
+		.requiresChannel((channel) -> channel.anyRequest().requiresSecure())
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user","/js/**",
-						"/article/**","/t/**","/articles","/topics","/favicon.ico",
+						"/article/**","/t/**","/articles","/topics","/posts","/latestpost","/p/**","/favicon.ico",
 						"/google3752f5be1fbf25c2.html","/privacy-policy","/contact","/sitemap.xml").permitAll()
 				.antMatchers("/admin/**","/api/**").hasRole("ADMIN")
 				.anyRequest().authenticated()

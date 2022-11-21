@@ -21,7 +21,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
    public Post getLatestPost();
    
    @Query("Select p FROM Post p WHERE p.id = :post_id")
-   public Post getPostById(@Param("post_id") long post_id);
+   public Post getPostById(@Param("post_id") String post_id);
    
    @Query("SELECT p FROM Post p")
 	public List<Post> getPosts();

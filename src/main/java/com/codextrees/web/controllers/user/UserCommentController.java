@@ -28,7 +28,7 @@ public class UserCommentController {
 	
  	@PostMapping("/comment/createcomment")
  	@ResponseBody
- 	public String user(@AuthenticationPrincipal OAuth2User principal, @ModelAttribute("commentdetails") Comment comment, @RequestParam(value = "postId",required = true) long postId	) {
+ 	public String user(@AuthenticationPrincipal OAuth2User principal, @ModelAttribute("commentdetails") Comment comment, @RequestParam(value = "postId",required = true) String postId	) {
  		comment.setUser(userService.getUser(principal.getAttribute("email")));
  		comment.setCreatedAt(DateTime.now());
 		comment.setUpdatedAt(DateTime.now());

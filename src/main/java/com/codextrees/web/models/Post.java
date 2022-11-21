@@ -18,8 +18,7 @@ import org.joda.time.DateTime;
 public class Post {
 	@Id
 	@Column(name = "post_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	private String title;
 	private String link;
 	private String link_title;
@@ -85,11 +84,11 @@ public class Post {
 	}
 
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

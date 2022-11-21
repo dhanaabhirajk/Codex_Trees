@@ -32,7 +32,13 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="tile">Title</label>
+      <label for="url">URL</label>
+      <input type="text" class="form-control" id="url" th:field="*{id}" placeholder="URL">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="title">Title</label>
       <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Title">
     </div>
   </div>

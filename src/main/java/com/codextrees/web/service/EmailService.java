@@ -33,13 +33,13 @@ public class EmailService {
 // @Autowired     
 // private Configuration fmConfiguration;
 
-
  @Autowired
  private SpringTemplateEngine templateEngine;
  @Autowired
  private PostService postService;
  @Value("${spring.mail.username}") private String sender;
 
+ 
  // To send a simple email
  public String sendSimpleMail(EmailDetails details)
  {
