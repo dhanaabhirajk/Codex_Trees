@@ -12,7 +12,7 @@
 			<img class="card-img-top" th:src="*{image_link}" alt="Card image cap">
 			<div class="card-body">
 				<center><h3 th:text="*{title}" class="card-title"></h3></center>
-				<p th:text="*{msgBody}" class="card-text"></p>
+				<p th:utext="*{msgBody}" class="card-text "></p>
 				<a th:href="*{link}" th:text="*{link_title}"
 					class="streched-link font-weight-bold"></a>
 			</div>

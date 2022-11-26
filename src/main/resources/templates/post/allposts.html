@@ -19,11 +19,11 @@
 	<div  class="row align-items-start mx-3" >
 		<div th:each="postdetails : ${posts}" class="col-11 mx-2 col-md-4 col-lg-3">
 			<div th:object="${postdetails}" class="card" style="">
-					<img class="card-img-top m-auto w-auto" src="https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png"
+					<img class="card-img-top m-auto w-auto" th:src="*{image_link}"
 						alt="Card image cap" height="150px">
 					<div class="card-body">
 						<h5 th:text="*{title}" class="card-title"></h5>
-						<p th:text = "*{msgBody}" class="card-text"></p>
+						<p th:utext = "*{msgBody}" class="card-text"></p>
 						<a th:href="@{'/p/'+*{id}}" th:text="*{link_title}"
 							class="streched-link font-weight-bold"></a>
 					</div>

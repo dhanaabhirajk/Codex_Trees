@@ -56,3 +56,6 @@ from the Screen */
 		opacity: 0;
 	}
 }
+.disabled-link {
+  pointer-events: none;
+}

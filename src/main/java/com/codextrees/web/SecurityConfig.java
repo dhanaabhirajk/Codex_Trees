@@ -41,7 +41,7 @@ public class SecurityConfig {
 
 		
 		http
-		.requiresChannel((channel) -> channel.anyRequest().requiresSecure())
+		
 		.authorizeRequests(a -> a
 				.antMatchers("/", "/error","/accessdenied", "/webjars/**","/css/**","/images/**","/user","/js/**",
 						"/article/**","/t/**","/articles","/topics","/posts","/latestpost","/p/**","/favicon.ico",
