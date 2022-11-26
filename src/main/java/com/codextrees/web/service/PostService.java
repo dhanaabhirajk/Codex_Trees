@@ -51,7 +51,13 @@ public class PostService {
 	}
 
 	public List<Post> getPosts() {
-		return postRepo.getPosts();
+		List<Post> posts = postRepo.getPosts();
+		for(Post post :posts) {
+			if(post.getTitle().length()>50)
+			post.setTitle(post.getTitle().substring(0,50).concat("..."));
+			post.setMsgBody(post.getMsgBody().substring(0, 100).concat("...."));
+		}
+		return posts;
 	}
 	
 	public PostDTO getPostDTO(Post post,boolean commentData) {

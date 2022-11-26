@@ -11,6 +11,11 @@ public class PostDTO {
 	private String title;
 	private String link;
 	private String link_title;
+	private String msgBody;
+	private DateTime createdAt;
+	private String image_link;
+	private List<CommentDTO> comments = new ArrayList<CommentDTO>();
+	
 	public PostDTO() {
 		
 	}
@@ -35,8 +40,7 @@ public class PostDTO {
 		this.link_title = link_title;
 	}
 
-	private String msgBody;
-	private DateTime createdAt;
+	
 	public String getId() {
 		return id;
 	}
@@ -93,8 +97,5 @@ public class PostDTO {
 		this.comments = comments;
 	}
 
-	private String image_link;
-	
-	private List<CommentDTO> comments = new ArrayList<CommentDTO>();
 	
 }

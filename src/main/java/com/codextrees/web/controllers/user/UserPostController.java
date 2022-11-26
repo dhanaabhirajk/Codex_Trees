@@ -35,7 +35,7 @@ public class UserPostController {
 		Comment comment = new Comment();
 		//comment.setPost(post);
 		model.addAttribute("commentdetails", comment);
-		model.addAttribute("pageTitle","Latest Post");	
+		model.addAttribute("pageTitle",post.getTitle());	
 		return "post/newlatestpost";
 	}
 	

@@ -1,29 +1,39 @@
 
 <html lang="en">
 <html xmlns:th="https://www.thymeleaf.org">
-<head th:replace = "fragments/header-with-ads :: header"></head>
+<head th:replace="fragments/header-with-ads :: header">
+
+</head>
 <body>
-<nav th:replace="fragments/navigation :: navigation"></nav>
+
+	<nav th:replace="fragments/navigation :: navigation"></nav>
 	<br>
 	<h3>Resources to learn Better !</h3>
-	<center><h4>Check out the <a href = "/latestpost">Latest post</a> </h4></center>
+	<center>
+		<h4>
+			Check out the <a href="/latestpost">Latest post</a>
+		</h4>
+	</center>
 	<br>
-	<div class="row">
-	<div th:each = "postdetails : ${posts}">
-	<div th:object="${postdetails}" class="col-sm-6">	
-		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" th:src="*{image_link}"
-				alt="Card image cap">
-			<div class="card-body">
-				<h5 th:text="*{title}" class="card-title"></h5>
-				<p th:text="*{msgBody}" class="card-text"></p>
-				<a th:href="@{'/p/'+*{id}}" th:text="*{link_title}" class="streched-link font-weight-bold"></a>
-			</div>
+	
+	<div  class="row align-items-start mx-3" >
+		<div th:each="postdetails : ${posts}" class="col-11 mx-2 col-md-4 col-lg-3">
+			<div th:object="${postdetails}" class="card" style="">
+					<img class="card-img-top m-auto w-auto" src="https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png"
+						alt="Card image cap" height="150px">
+					<div class="card-body">
+						<h5 th:text="*{title}" class="card-title"></h5>
+						<p th:text = "*{msgBody}" class="card-text"></p>
+						<a th:href="@{'/p/'+*{id}}" th:text="*{link_title}"
+							class="streched-link font-weight-bold"></a>
+					</div>
+				</div>
+			
 		</div>
 	</div>
-	</div>
-	</div>
+	
 	<div id="snackbar"></div>
 	<div th:replace="fragments/footer :: footer"></div>
+	
 </body>
 </html>
